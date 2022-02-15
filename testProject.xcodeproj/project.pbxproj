@@ -9,21 +9,39 @@
 /* Begin PBXBuildFile section */
 		2DCD81F227BBF84E00BF08AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F127BBF84E00BF08AC /* AppDelegate.swift */; };
 		2DCD81F427BBF84F00BF08AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F327BBF84F00BF08AC /* SceneDelegate.swift */; };
-		2DCD81F627BBF84F00BF08AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F527BBF84F00BF08AC /* ViewController.swift */; };
-		2DCD81F927BBF84F00BF08AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCD81F727BBF84F00BF08AC /* Main.storyboard */; };
+		2DCD81F627BBF84F00BF08AC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F527BBF84F00BF08AC /* MainViewController.swift */; };
 		2DCD81FB27BBF85100BF08AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCD81FA27BBF85100BF08AC /* Assets.xcassets */; };
 		2DCD81FE27BBF85100BF08AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCD81FC27BBF85100BF08AC /* LaunchScreen.storyboard */; };
+		2DCD820F27BC0FE800BF08AC /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD820E27BC0FE800BF08AC /* Light.swift */; };
+		2DCD821127BC102800BF08AC /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD821027BC102800BF08AC /* Device.swift */; };
+		2DCD821327BC39C700BF08AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCD821227BC39C700BF08AC /* Main.storyboard */; };
+		2DCD821527BC416C00BF08AC /* Heater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD821427BC416C00BF08AC /* Heater.swift */; };
+		2DCD821727BC422100BF08AC /* RollerShutter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD821627BC422100BF08AC /* RollerShutter.swift */; };
+		2DCD821927BC429F00BF08AC /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD821827BC429F00BF08AC /* APIService.swift */; };
+		2DCD821B27BC453500BF08AC /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD821A27BC453500BF08AC /* APIResponse.swift */; };
+		2DCD821D27BC456100BF08AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD821C27BC456100BF08AC /* User.swift */; };
+		2DCD821F27BC457800BF08AC /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD821E27BC457800BF08AC /* Address.swift */; };
+		2DCD822127BC495400BF08AC /* DevicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD822027BC495400BF08AC /* DevicesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2DCD81EE27BBF84E00BF08AC /* testProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCD81F127BBF84E00BF08AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DCD81F327BBF84F00BF08AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2DCD81F527BBF84F00BF08AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2DCD81F827BBF84F00BF08AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2DCD81F527BBF84F00BF08AC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2DCD81FA27BBF85100BF08AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DCD81FD27BBF85100BF08AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DCD81FF27BBF85100BF08AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DCD820E27BC0FE800BF08AC /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
+		2DCD821027BC102800BF08AC /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		2DCD821227BC39C700BF08AC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
+		2DCD821427BC416C00BF08AC /* Heater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heater.swift; sourceTree = "<group>"; };
+		2DCD821627BC422100BF08AC /* RollerShutter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutter.swift; sourceTree = "<group>"; };
+		2DCD821827BC429F00BF08AC /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		2DCD821A27BC453500BF08AC /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		2DCD821C27BC456100BF08AC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2DCD821E27BC457800BF08AC /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		2DCD822027BC495400BF08AC /* DevicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +74,56 @@
 		2DCD81F027BBF84E00BF08AC /* testProject */ = {
 			isa = PBXGroup;
 			children = (
+				2DCD820B27BC022200BF08AC /* Controllers */,
+				2DCD820D27BC025D00BF08AC /* ViewModels */,
+				2DCD820C27BC024E00BF08AC /* APIService */,
+				2DCD820827BC000600BF08AC /* Models */,
 				2DCD81F127BBF84E00BF08AC /* AppDelegate.swift */,
 				2DCD81F327BBF84F00BF08AC /* SceneDelegate.swift */,
-				2DCD81F527BBF84F00BF08AC /* ViewController.swift */,
-				2DCD81F727BBF84F00BF08AC /* Main.storyboard */,
 				2DCD81FA27BBF85100BF08AC /* Assets.xcassets */,
+				2DCD821227BC39C700BF08AC /* Main.storyboard */,
 				2DCD81FC27BBF85100BF08AC /* LaunchScreen.storyboard */,
 				2DCD81FF27BBF85100BF08AC /* Info.plist */,
 			);
 			path = testProject;
+			sourceTree = "<group>";
+		};
+		2DCD820827BC000600BF08AC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2DCD821027BC102800BF08AC /* Device.swift */,
+				2DCD820E27BC0FE800BF08AC /* Light.swift */,
+				2DCD821427BC416C00BF08AC /* Heater.swift */,
+				2DCD821627BC422100BF08AC /* RollerShutter.swift */,
+				2DCD821A27BC453500BF08AC /* APIResponse.swift */,
+				2DCD821C27BC456100BF08AC /* User.swift */,
+				2DCD821E27BC457800BF08AC /* Address.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2DCD820B27BC022200BF08AC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2DCD81F527BBF84F00BF08AC /* MainViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2DCD820C27BC024E00BF08AC /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				2DCD821827BC429F00BF08AC /* APIService.swift */,
+			);
+			path = APIService;
+			sourceTree = "<group>";
+		};
+		2DCD820D27BC025D00BF08AC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				2DCD822027BC495400BF08AC /* DevicesViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,9 +183,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DCD821327BC39C700BF08AC /* Main.storyboard in Resources */,
 				2DCD81FE27BBF85100BF08AC /* LaunchScreen.storyboard in Resources */,
 				2DCD81FB27BBF85100BF08AC /* Assets.xcassets in Resources */,
-				2DCD81F927BBF84F00BF08AC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +196,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD81F627BBF84F00BF08AC /* ViewController.swift in Sources */,
+				2DCD821527BC416C00BF08AC /* Heater.swift in Sources */,
+				2DCD81F627BBF84F00BF08AC /* MainViewController.swift in Sources */,
 				2DCD81F227BBF84E00BF08AC /* AppDelegate.swift in Sources */,
+				2DCD820F27BC0FE800BF08AC /* Light.swift in Sources */,
+				2DCD822127BC495400BF08AC /* DevicesViewModel.swift in Sources */,
 				2DCD81F427BBF84F00BF08AC /* SceneDelegate.swift in Sources */,
+				2DCD821727BC422100BF08AC /* RollerShutter.swift in Sources */,
+				2DCD821927BC429F00BF08AC /* APIService.swift in Sources */,
+				2DCD821B27BC453500BF08AC /* APIResponse.swift in Sources */,
+				2DCD821D27BC456100BF08AC /* User.swift in Sources */,
+				2DCD821F27BC457800BF08AC /* Address.swift in Sources */,
+				2DCD821127BC102800BF08AC /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2DCD81F727BBF84F00BF08AC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2DCD81F827BBF84F00BF08AC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2DCD81FC27BBF85100BF08AC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,6 +349,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G95HLX3X7B;
 				INFOPLIST_FILE = testProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +369,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G95HLX3X7B;
 				INFOPLIST_FILE = testProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
