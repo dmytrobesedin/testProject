@@ -12,19 +12,25 @@ class Light: Device {
     var intensity: Int
     var mode: Mode
     
+    private enum CodingKeys: String, CodingKey {
+          case intensity
+          case mode
+      }
     
-    init(id: Int, deviceName: String, productType: ProductType,intensity: Int, mode:Mode) {
-        self.intensity = intensity
-        self.mode = mode 
-        super.init(id: id, deviceName: deviceName, productType: productType)
-       
-    }
+    
+
     
     required init(from decoder: Decoder) throws {
-        fatalError("init(from:) has not been implemented")
+        let container  = try decoder.container(keyedBy: CodingKeys.self)
+        self.intensity = try container.decode(Int.self, forKey: .intensity)
+        self.mode = try  container.decode(Mode.self, forKey: .mode)
+        try super.init(from: decoder)
     }
     
-    enum Mode: String,Codable {
+
+
+    
+    enum Mode: String,Decodable {
         case on = "ON"
         case off = "OFF"
     }

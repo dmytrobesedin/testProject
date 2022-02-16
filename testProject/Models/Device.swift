@@ -8,28 +8,27 @@
 import Foundation
 
 
-protocol DeviceProtocol {
-    var id: Int { get }
-    var deviceName: String { get }
-    var productType: ProductType { get }
-    init(id:Int, deviceName: String, productType: ProductType)
-}
-
 
 // MARK: - Device
-class Device: Codable {
+class Device: Decodable {
     let id: Int
     let deviceName: String
     let productType: ProductType
     
- public init(id:Int, deviceName: String, productType: ProductType) {
-        self.id = id
-        self.deviceName = deviceName
-        self.productType = productType
+//    
+    private enum CodingKeys: String, CodingKey{
+        case id
+        case deviceName
+        case productType
     }
+    enum ProductType: String, Decodable {
+        case heater = "Heater"
+        case light = "Light"
+        case rollerShutter = "RollerShutter"
+    }
+    
+    
+    
+
 }
-enum ProductType: String, Codable {
-    case heater = "Heater"
-    case light = "Light"
-    case rollerShutter = "RollerShutter"
-}
+

@@ -12,10 +12,13 @@ import Foundation
 class Heater: Device {
     var temperature:Int
     var mode: Mode
-    init(id: Int, deviceName: String, productType: ProductType, mode:Mode, temperature:Int) {
-        self.temperature = temperature
-        self.mode = mode
-        super.init(id: id, deviceName: deviceName, productType: productType)
+    
+    
+  
+    private enum CodingKeys: String, CodingKey {
+        case temperature
+        case mode
+        
     }
     
     
@@ -25,6 +28,11 @@ class Heater: Device {
     }
     
     required init(from decoder: Decoder) throws {
-        fatalError("init(from:) has not been implemented")
+        let container  = try decoder.container(keyedBy: CodingKeys.self)
+        self.temperature = try container.decode(Int.self, forKey: .temperature)
+        self.mode = try container.decode(Mode.self, forKey: .mode)
+        try super.init(from: decoder)
     }
+    
+    
 }

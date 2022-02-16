@@ -9,7 +9,7 @@
 import Foundation
 class DevicesViewModel: NSObject {
     var apiService: APIService!
-    private(set) var empData: APIResponse? {
+    private(set) var empData: ModulotestAPIResponse? {
         didSet {
             self.bindDevicesViewModelToController()
         }
@@ -28,16 +28,12 @@ class DevicesViewModel: NSObject {
         
         DispatchQueue.global().async {
             
-            self.apiService.apiToGetEmployeeData { apiResponse in
+            self.apiService.apiToGetDeviceData { apiResponse in
                 
+               
                 self.empData = apiResponse
                 
-                                            for item in apiResponse.devices {
-                
-                                                print("id = \(item.id), deviceName = \(item.deviceName), productType = \(item.productType.rawValue)")
-                
-                                            }
-                
+
             }
         }
     }

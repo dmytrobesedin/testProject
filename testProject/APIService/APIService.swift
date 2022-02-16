@@ -9,17 +9,21 @@ import Foundation
 
 
 class APIService: NSObject {
-   static let urlString = "http://storage42.com/modulotest/data.json"
-    let url = URL(string: urlString)!
-    func apiToGetEmployeeData(completion : @escaping (APIResponse) -> ()){
-       let dataTask =  URLSession.shared.dataTask(with: url) { (data, urlResponse, error) in
+    static let urlString = "http://storage42.com/modulotest/data.json"
+   let url = URL(string: urlString)!
+
+    func apiToGetDeviceData(completion : @escaping (ModulotestAPIResponse) -> ()){
+        let dataTask =  URLSession.shared.dataTask(with: url) { (data, urlResponse, anotherError) in
         guard let data = data  else{return}
                 
                 let jsonDecoder = JSONDecoder()
-                
-                let decodeData = try! jsonDecoder.decode(APIResponse.self, from: data)
+        do {
+                let decodeData = try jsonDecoder.decode(ModulotestAPIResponse.self, from: data)
                     completion(decodeData)
-            
+        }
+        catch (let err){
+            print("errorrr \(err)")
+        }
         }
         dataTask.resume()
     }
