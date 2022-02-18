@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2D06A4A027BD260A001A2116 /* DeviceFabrique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D06A49F27BD260A001A2116 /* DeviceFabrique.swift */; };
+		2D3791B827BECE26007D4F91 /* LightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3791B727BECE26007D4F91 /* LightDetailViewController.swift */; };
+		2D3791BA27BF272F007D4F91 /* LightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3791B927BF272F007D4F91 /* LightViewModel.swift */; };
 		2DCD81F227BBF84E00BF08AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F127BBF84E00BF08AC /* AppDelegate.swift */; };
 		2DCD81F427BBF84F00BF08AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F327BBF84F00BF08AC /* SceneDelegate.swift */; };
 		2DCD81F627BBF84F00BF08AC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F527BBF84F00BF08AC /* MainViewController.swift */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		2D06A49F27BD260A001A2116 /* DeviceFabrique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFabrique.swift; sourceTree = "<group>"; };
+		2D3791B727BECE26007D4F91 /* LightDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetailViewController.swift; sourceTree = "<group>"; };
+		2D3791B927BF272F007D4F91 /* LightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewModel.swift; sourceTree = "<group>"; };
 		2DCD81EE27BBF84E00BF08AC /* testProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCD81F127BBF84E00BF08AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DCD81F327BBF84F00BF08AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				2DCD81F527BBF84F00BF08AC /* MainViewController.swift */,
+				2D3791B727BECE26007D4F91 /* LightDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				2DCD822027BC495400BF08AC /* DevicesViewModel.swift */,
+				2D3791B927BF272F007D4F91 /* LightViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -203,11 +209,13 @@
 				2DCD81F627BBF84F00BF08AC /* MainViewController.swift in Sources */,
 				2DCD81F227BBF84E00BF08AC /* AppDelegate.swift in Sources */,
 				2DCD820F27BC0FE800BF08AC /* Light.swift in Sources */,
+				2D3791B827BECE26007D4F91 /* LightDetailViewController.swift in Sources */,
 				2DCD822127BC495400BF08AC /* DevicesViewModel.swift in Sources */,
 				2DCD81F427BBF84F00BF08AC /* SceneDelegate.swift in Sources */,
 				2DCD821727BC422100BF08AC /* RollerShutter.swift in Sources */,
 				2DCD821927BC429F00BF08AC /* APIService.swift in Sources */,
 				2DCD821B27BC453500BF08AC /* ModulotestAPIResponse.swift in Sources */,
+				2D3791BA27BF272F007D4F91 /* LightViewModel.swift in Sources */,
 				2DCD821D27BC456100BF08AC /* User.swift in Sources */,
 				2D06A4A027BD260A001A2116 /* DeviceFabrique.swift in Sources */,
 				2DCD821F27BC457800BF08AC /* Address.swift in Sources */,

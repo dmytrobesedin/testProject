@@ -15,7 +15,7 @@ class Device: Decodable {
     let deviceName: String
     let productType: ProductType
     
-//    
+  
     private enum CodingKeys: String, CodingKey{
         case id
         case deviceName

@@ -9,33 +9,26 @@
 import Foundation
 class DevicesViewModel: NSObject {
     var apiService: APIService!
-    private(set) var empData: ModulotestAPIResponse? {
+    private(set) var deviceData: ModulotestAPIResponse? {
         didSet {
             self.bindDevicesViewModelToController()
         }
     }
     
+    
+    
     var bindDevicesViewModelToController : (() -> ()) = {}
     
     override init() {
         super.init()
-
         self.apiService = APIService()
         self.callFuncToGetDecodeData()
-        
     }
     func callFuncToGetDecodeData()  {
-        
         DispatchQueue.global().async {
-            
             self.apiService.apiToGetDeviceData { apiResponse in
-                
-               
-                self.empData = apiResponse
-                
-
+                self.deviceData = apiResponse
             }
         }
     }
-    
 }

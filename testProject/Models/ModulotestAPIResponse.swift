@@ -8,12 +8,11 @@
 import Foundation
 
 
-// MARK: - Data
+// MARK: - ModulotestAPIResponse
 struct ModulotestAPIResponse: Decodable {
     var devices: [Device]
    // var user: User
     
-
     enum ModulotestAPIResponseKey:CodingKey {
         case devices
        // case user
@@ -45,22 +44,10 @@ struct ModulotestAPIResponse: Decodable {
                 print("found a heater")
                 devices.append(try devicesArray.decode(Heater.self))
             case .rollerShutter:
-                
-                
                 print("found a rollerShutter")
- 
                 devices.append(try devicesArray.decode(RollerShutter.self))
-           
             }
-            
-           
-            
-            
         }
-      
-       
         self.devices = devices
-        
-       
     }
 }

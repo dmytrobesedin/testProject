@@ -21,8 +21,8 @@ class APIService: NSObject {
                 let decodeData = try jsonDecoder.decode(ModulotestAPIResponse.self, from: data)
                     completion(decodeData)
         }
-        catch (let err){
-            print("errorrr \(err)")
+        catch (let error){
+            print("errorrr \(error)")
         }
         }
         dataTask.resume()
