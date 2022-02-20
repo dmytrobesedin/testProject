@@ -133,7 +133,7 @@ extension MainViewController:UITableViewDelegate, UITableViewDataSource {
         
         
         vc.lightViewModel = LightViewModel(lightDataModel: lightDevices)
-        vc.view.backgroundColor = .brown
+        vc.view.backgroundColor = .white
         navigationController?.pushViewController(vc, animated: false)
         //self.navigationController?.pushViewController(vc, animated: false)
         
