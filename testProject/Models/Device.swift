@@ -27,7 +27,9 @@ class Device: Decodable {
         case rollerShutter = "RollerShutter"
     }
     
-    
+    func saveToUD() {
+        
+    }
     
 
 }

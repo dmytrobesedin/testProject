@@ -6,27 +6,27 @@
 //
 
 import Foundation
+
 class LightViewModel {
      var lightDataModel: Light
     init(lightDataModel: Light) {
         self.lightDataModel = lightDataModel
     }
     
-   public var intensity:String{
-        return "intensity - \(lightDataModel.intensity)"
+   public var intensity: Int {
+    return lightDataModel.intensity
     }
     
-    public var mode:String{
-        return "mode - \(lightDataModel.mode.rawValue)"
+    public var mode: Light.LightMode {
+        return lightDataModel.mode
      }
     
-    public var deviceName:String{
-        return "deviceName - \(lightDataModel.deviceName)"
+    public var deviceName: String {
+        return lightDataModel.deviceName
      }
-    public var productType:String{
-        return "productType - \(lightDataModel.productType.rawValue)"
+    public var productType: String {
+        return lightDataModel.productType.rawValue
      }
     
-    var bindDevicesViewModelToController : (() -> ()) = {}
-    
+ 
 }

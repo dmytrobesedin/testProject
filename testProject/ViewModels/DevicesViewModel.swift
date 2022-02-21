@@ -9,13 +9,12 @@
 import Foundation
 class DevicesViewModel: NSObject {
     var apiService: APIService!
+   // var selectedDevice: Device
     private(set) var deviceData: ModulotestAPIResponse? {
         didSet {
             self.bindDevicesViewModelToController()
         }
     }
-    
-    
     
     var bindDevicesViewModelToController : (() -> ()) = {}
     
@@ -24,11 +23,16 @@ class DevicesViewModel: NSObject {
         self.apiService = APIService()
         self.callFuncToGetDecodeData()
     }
+    
     func callFuncToGetDecodeData()  {
         DispatchQueue.global().async {
             self.apiService.apiToGetDeviceData { apiResponse in
                 self.deviceData = apiResponse
             }
         }
+    }
+    
+    func moveToDetails() {
+        
     }
 }
