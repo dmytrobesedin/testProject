@@ -20,14 +20,14 @@ class HeaterTableViewCell: UITableViewCell {
         
     }
     
-    public func configureHeaterCell(heaterModel: Heater) {
-        self.textLabel?.text = heaterModel.deviceName
-        if heaterModel.mode == .on {
-            self.detailTextLabel?.text = "mode - \(heaterModel.mode.rawValue) at \(heaterModel.temperature)°C"
+    public func configureHeaterCell(heaterViewModel: HeaterViewModel) {
+        self.textLabel?.text = heaterViewModel.deviceName.localized()
+        if heaterViewModel.mode == .on {
+            self.detailTextLabel?.text = "mode - \(heaterViewModel.mode.rawValue) at ".localized() + "\(heaterViewModel.temperature)°C"
             self.imageView?.image = UIImage(named: "DeviceHeaterOnIcon")
         }
-        else{
-            self.detailTextLabel?.text = "mode - \(heaterModel.mode.rawValue)"
+        else {
+            self.detailTextLabel?.text = "mode - \(heaterViewModel.mode.rawValue)".localized()
             self.imageView?.image = UIImage(named: "DeviceHeaterOffIcon")
             
         }

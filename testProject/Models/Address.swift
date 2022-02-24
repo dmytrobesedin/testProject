@@ -10,7 +10,7 @@ import Foundation
 
 
 // MARK: - Address
-struct Address: Decodable {
+struct Address: Codable {
     let city: String
     let postalCode: Int
     let street, streetCode, country: String

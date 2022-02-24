@@ -21,19 +21,19 @@ class RollerShutterTableViewCell: UITableViewCell {
     }
     
     
-    public func configureRollerShutterCell(rollerShutterModel: RollerShutter) {
-        self.textLabel?.text = rollerShutterModel.deviceName
-        if rollerShutterModel.position == 0 {
-            self.detailTextLabel?.text = "mode - closed"
+    public func configureRollerShutterCell(rollerShutterViewModel: RollerShutterViewModel) {
+        self.textLabel?.text = rollerShutterViewModel.deviceName.localized()
+        if rollerShutterViewModel.position == 0 {
+            self.detailTextLabel?.text = "mode - closed".localized()
             self.imageView?.image = UIImage(named: "DeviceRollerShutterIcon")
         }
-        else if rollerShutterModel.position == 100 {
+        else if rollerShutterViewModel.position == 100 {
 
-            self.detailTextLabel?.text = "mode - fully opened, opened at \(rollerShutterModel.position)%"
+            self.detailTextLabel?.text = "mode - fully opened,".localized() + " opened at".localized() + "\(rollerShutterViewModel.position)%"
             self.imageView?.image = UIImage(named: "DeviceRollerShutterIcon")
         }
         else{
-            self.detailTextLabel?.text = " opened at \(rollerShutterModel.position)%"
+            self.detailTextLabel?.text = "opened at".localized() + "\(rollerShutterViewModel.position)%"
             self.imageView?.image = UIImage(named: "DeviceRollerShutterIcon")
         }
     }

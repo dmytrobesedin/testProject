@@ -18,16 +18,16 @@ class LightTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    public func configureLightCell(lightModel: Light) {
+    public func configureLightCell(lightViewModel: LightViewModel) {
         
-        self.textLabel?.text = "\(lightModel.deviceName)"
-        if lightModel.mode == .on{
-            self.detailTextLabel?.text = "mode - \(lightModel.mode.rawValue) at \(lightModel.intensity)%"
+        self.textLabel?.text = "\(lightViewModel.deviceName)".localized()
+        if lightViewModel.mode == .on{
+            self.detailTextLabel?.text = "mode - \(lightViewModel.mode.rawValue) at ".localized() + "\(lightViewModel.intensity)%"
             self.imageView?.image = UIImage(named: "DeviceLightOnIcon")
         }
         else
         {
-            self.detailTextLabel?.text = "mode - \(lightModel.mode.rawValue)"
+            self.detailTextLabel?.text = "mode - \(lightViewModel.mode.rawValue)".localized()
             self.imageView?.image = UIImage(named: "DeviceLightOffIcon")
         }
     }

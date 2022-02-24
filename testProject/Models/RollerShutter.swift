@@ -23,4 +23,14 @@ class RollerShutter: Device {
         self.position = try container.decode(Int.self, forKey: .position)
         try super.init(from: decoder)
     }
+    // for encode the  value
+    override func encode(to encoder: Encoder) throws {
+        var values = encoder.container(keyedBy: CodingKeys.self)
+        try? values.encodeIfPresent(position, forKey: .position)
+        }
+    
+    
+    override func userDefaultsKeys() -> [String] {
+        return [String(super.id) + CodingKeys.position.rawValue]
+    }
 }

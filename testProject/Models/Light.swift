@@ -16,9 +16,12 @@ class Light: Device {
           case intensity
           case mode
       }
-    
-    
 
+    init(id: Int, deviceName: String, productType: ProductType, intensity:Int, mode:LightMode) {
+        self.intensity = intensity
+        self.mode = mode
+        super.init(id: id, deviceName: deviceName, productType: productType)
+    }
     
     required init(from decoder: Decoder) throws {
         let container  = try decoder.container(keyedBy: CodingKeys.self)
@@ -28,11 +31,23 @@ class Light: Device {
     }
     
 
+    // for encode the  value
+    override func encode(to encoder: Encoder) throws {
+        var values = encoder.container(keyedBy: CodingKeys.self)
+        try? values.encodeIfPresent(intensity, forKey: .intensity)
+        try? values.encodeIfPresent(mode, forKey: .mode)
+        try super.encode(to: encoder)
+        }
 
     
-    enum LightMode: String,Decodable {
+    enum LightMode: String,Codable {
         case on = "ON"
         case off = "OFF"
+    }
+    
+    override func userDefaultsKeys() -> [String] {
+        return [String(super.id) + CodingKeys.intensity.rawValue,
+                String(super.id) + CodingKeys.mode.rawValue]
     }
     
 }

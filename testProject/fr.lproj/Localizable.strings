@@ -1,0 +1,24 @@
+/* 
+  Localzable.strings
+  testProject
+
+  Created by Дмитрий Беседин on 22.02.2022.
+  
+*/
+"Intensity:" = "Intensité:";
+"Mode:" = "Mode:";
+"Save" = "Economie";
+"Temperature:" = "Température:";
+"Position:" = "Position:";
+"mode - closed" = "mode - fermé";
+"mode - fully opened, " = "mode - entièrement ouvert, ";
+"opened at" = "ouvert à ";
+
+"opened at " = "ouvert à ";
+"mode - ON at " = "mode - ON à ";
+"mode - OFF at " = "mode - OFF à ";
+"mode - OFF" = "mode - OFF";
+
+
+
+

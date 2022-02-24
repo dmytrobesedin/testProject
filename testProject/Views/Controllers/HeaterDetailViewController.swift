@@ -11,7 +11,7 @@ class HeaterDetailViewController: UIViewController {
     private  var heaterTemperatureLabel: UILabel = {
         var label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         label.font = .preferredFont(forTextStyle: .body)
-        label.text = "Temperature:"
+        label.text = "Temperature:".localized()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -27,7 +27,7 @@ class HeaterDetailViewController: UIViewController {
     private  var heaterModeLabel: UILabel = {
         var label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         label.font = .preferredFont(forTextStyle: .body)
-        label.text = "Mode:"
+        label.text = "Mode:".localized()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -96,6 +96,7 @@ class HeaterDetailViewController: UIViewController {
         } else {
             heaterModeSwitch.setOn(false, animated: false)
         }
+        
     }
     
     
@@ -108,6 +109,15 @@ class HeaterDetailViewController: UIViewController {
         var heaterData = heaterViewModel?.heaterDataModel.temperature
         heaterData = Int(sender.value)
         print(sender.value)
+        guard let heaterId = heaterViewModel?.heaterDataModel.id  else {
+            return
+        }
+        
+        let key  = "\(heaterId)\(Heater.CodingKeys.temperature.rawValue)"
+        UserDefaults.standard.removeObject(forKey: key)
+        
+        
+     UserDefaults.standard.setValue(Int(sender.value), forKey: "\(heaterId)\(Heater.CodingKeys.temperature.rawValue)")
         
     }
     
@@ -121,6 +131,8 @@ class HeaterDetailViewController: UIViewController {
             heaterData = .off
         }
         print(heaterData)
+        
+      //  UserDefaults.standard.setValue(String(sender.isOn), forKey: "\(heaterViewModel?.heaterDataModel.id) +\(Heater.CodingKeys.mode.rawValue )")
     }
     
     
