@@ -113,25 +113,32 @@ class HeaterDetailViewController: UIViewController {
             return
         }
         
-        let key  = "\(heaterId)\(Heater.CodingKeys.temperature.rawValue)"
+        let key  = "\(heaterId)|\(Heater.CodingKeys.temperature.rawValue)"
         UserDefaults.standard.removeObject(forKey: key)
         
         
-     UserDefaults.standard.setValue(Int(sender.value), forKey: "\(heaterId)\(Heater.CodingKeys.temperature.rawValue)")
+     UserDefaults.standard.setValue(Int(sender.value), forKey: key)
         
     }
     
     @objc func switchValueChanged(sender: UISwitch){
         guard sender != nil else {return  }
-        guard var heaterData = heaterViewModel?.heaterDataModel.mode  else {return }
+        let heaterData:Bool
         if sender.isOn {
-            heaterData = .on
+            heaterData = true
         }
         else{
-            heaterData = .off
+            heaterData = false
         }
         print(heaterData)
+        guard let heaterId = heaterViewModel?.heaterDataModel.id  else {
+            return
+        }
+        let key  = "\(heaterId)|\(Heater.CodingKeys.mode.rawValue)"
+        UserDefaults.standard.removeObject(forKey: key)
         
+        
+        UserDefaults.standard.setValue(heaterData, forKey: key)
       //  UserDefaults.standard.setValue(String(sender.isOn), forKey: "\(heaterViewModel?.heaterDataModel.id) +\(Heater.CodingKeys.mode.rawValue )")
     }
     

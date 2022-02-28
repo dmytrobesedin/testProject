@@ -31,6 +31,6 @@ class RollerShutter: Device {
     
     
     override func userDefaultsKeys() -> [String] {
-        return [String(super.id) + CodingKeys.position.rawValue]
+        return [String(super.id) + "|" + CodingKeys.position.rawValue]
     }
 }

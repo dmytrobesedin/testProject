@@ -36,17 +36,29 @@ class DevicesViewModel: NSObject {
                     print(key)
                         
                         if UserDefaults.standard.isKeyPresentInUserDefaults(key: key) {
-                      
+                            let arrayKey = key.components(separatedBy: "|")
+                            
+                            
                             
                             if device.productType == .heater {
-                                
-                                
+                            if arrayKey[1] == Heater.CodingKeys.temperature.rawValue {
                                 guard  let heaterDevice  = device as? Heater else{return}
                                 
-                                guard let newValue = UserDefaults.standard.object(forKey: key) as? Int else{return}
+                                guard let newValueTemp = UserDefaults.standard.object(forKey: key) as? Int else{return}
+                                heaterDevice.temperature = newValueTemp
                                 
-                                heaterDevice.temperature = newValue
+                            }
+                            else if arrayKey[1] == Heater.CodingKeys.mode.rawValue {
+                                guard  let heaterDevice  = device as? Heater else{return}
                                 
+                                guard let newValueMode = UserDefaults.standard.object(forKey: key) as? Bool else{return}
+                                if newValueMode{
+                                    heaterDevice.mode = .on
+                                }
+                                else if newValueMode == false{
+                                    heaterDevice.mode = .off
+                                }
+                            }
                             }
                         }
 //                        else {

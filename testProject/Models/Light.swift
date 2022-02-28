@@ -46,8 +46,8 @@ class Light: Device {
     }
     
     override func userDefaultsKeys() -> [String] {
-        return [String(super.id) + CodingKeys.intensity.rawValue,
-                String(super.id) + CodingKeys.mode.rawValue]
+        return [String(super.id) + "|" + CodingKeys.intensity.rawValue,
+                String(super.id) + "|" + CodingKeys.mode.rawValue]
     }
     
 }
