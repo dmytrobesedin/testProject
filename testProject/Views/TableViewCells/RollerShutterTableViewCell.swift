@@ -8,16 +8,16 @@
 import UIKit
 
 class RollerShutterTableViewCell: UITableViewCell {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-   
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-       
+        
+        
     }
     
     
@@ -28,8 +28,8 @@ class RollerShutterTableViewCell: UITableViewCell {
             self.imageView?.image = UIImage(named: "DeviceRollerShutterIcon")
         }
         else if rollerShutterViewModel.position == 100 {
-
-            self.detailTextLabel?.text = "mode - fully opened,".localized() + " opened at".localized() + "\(rollerShutterViewModel.position)%"
+            
+            self.detailTextLabel?.text = "mode - fully opened,".localized() + " opened at ".localized() + "\(rollerShutterViewModel.position)%"
             self.imageView?.image = UIImage(named: "DeviceRollerShutterIcon")
         }
         else{

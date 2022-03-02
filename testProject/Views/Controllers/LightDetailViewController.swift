@@ -41,13 +41,7 @@ class LightDetailViewController: UIViewController {
         return modeSwitch
     }()
     
-   lazy   var saveBarButtonItem: UIBarButtonItem = {
-        var button = UIBarButtonItem(title: "Save".localized(), style: .plain, target: self, action: #selector(saveChanges(sender:)))
     
-     
-        return button
-    }()
-
     
     public   var lightViewModel: LightViewModel?
     
@@ -58,16 +52,8 @@ class LightDetailViewController: UIViewController {
         
         
         // addTarget
-       
-     //   self.saveBarButtonItem.action =  #selector(saveChanges )
-        
-        //        guard let mode = lightViewModel?.lightDataModel.mode.rawValue  else {
-        //            return
-        //        }
-        //        guard let intensity = lightViewModel?.lightDataModel.intensity  else {
-        //            return
-        //        }
-        //
+        self.intensitySlider.addTarget(self, action: #selector(changeSlider), for: .valueChanged)
+        self.modeSwitch.addTarget(self, action: #selector(changeSwitch ), for: .valueChanged)
         
         
         // addSubviews
@@ -76,11 +62,8 @@ class LightDetailViewController: UIViewController {
         self.view.addSubview(modeLabel)
         self.view.addSubview(modeSwitch)
         
-       // navigationItem.rightBarButtonItem = saveBarButtonItem
-        
-        
+        // setUp
         setUpValue()
-        
         setUpConstraints()
     }
     
@@ -89,13 +72,11 @@ class LightDetailViewController: UIViewController {
         navigationItem.title  = lightViewModel?.deviceName
         self.intensitySlider.setValue(Float(lightViewModel?.intensity ?? 0), animated: false)
         
-        
         if lightViewModel?.mode == .on {
             modeSwitch.setOn(true, animated: false)
         } else {
             modeSwitch.setOn(false, animated: false)
         }
-        navigationItem.setRightBarButton(saveBarButtonItem, animated: false)
     }
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
@@ -121,58 +102,30 @@ class LightDetailViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        self.intensitySlider.addTarget(self, action: #selector(changeSlider), for: .valueChanged)
-        self.modeSwitch.addTarget(self, action: #selector(changeSwitch ), for: .valueChanged)
-       // self.saveBarButtonItem.action = #selector(saveChanges)
+        
     }
     
     @objc func changeSlider(sender: UISlider){
-        guard sender != nil else {return  }
-        guard var  lightData = lightViewModel?.lightDataModel.intensity else{return}
-        lightData = Int(sender.value)
-        print(lightData)
-        
+        guard sender != nil else {return}
+        guard let lightId = lightViewModel?.id  else {return}
+        let key  = "\(lightId)|\(Light.CodingKeys.intensity.rawValue)"
+        UserDefaults.standard.removeObject(forKey: key)
+        UserDefaults.standard.setValue(Int(sender.value), forKey: key)
     }
     
     
     @objc func changeSwitch(sender: UISwitch){
         guard sender != nil else {return  }
-        guard   var lightData = lightViewModel?.lightDataModel.mode else{return}
+        let lightData: Bool
         if sender.isOn {
-            lightData = .on
+            lightData = true
         }
         else{
-            lightData = .off
+            lightData = false
         }
-        print(lightData)
+        guard let lightId = lightViewModel?.id  else {return}
+        let key  = "\(lightId)|\(Light.CodingKeys.mode.rawValue)"
+        UserDefaults.standard.removeObject(forKey: key)
+        UserDefaults.standard.setValue(lightData, forKey: key)
     }
- @objc   func barbutton()  {
-        print("Here")
-    }
-    @objc func saveChanges(sender:UIBarButtonItem) {
-        guard sender != nil else {return  }
-      
-            print("is here")
-    let modeStatus: Light.LightMode
-    if modeSwitch.isOn {
-        modeStatus = .on
-    }
-    else{
-        modeStatus = .off
-    }
-        guard let lightvc = lightViewModel else {   return}
-         let sliderValue = Int(intensitySlider.value)
-
-       
-     //  UserDefaults.standard.set(newlight, forKey: "id")
-
-      //  print(newlight)
-
-    //    print(UserDefaults.standard.auth(forKey: "id"))
-
-    }
-    
-    
-    
-    
 }

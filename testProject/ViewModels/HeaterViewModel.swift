@@ -12,6 +12,9 @@ class HeaterViewModel {
         self.heaterDataModel = heaterDataModel
     }
     
+    public var id: Int {
+        return heaterDataModel.id
+    }
     public var temperature: Int {
         return heaterDataModel.temperature
     }

@@ -12,11 +12,11 @@ class Light: Device {
     var intensity: Int
     var mode: LightMode
     
-    private enum CodingKeys: String, CodingKey {
-          case intensity
-          case mode
-      }
-
+    public  enum CodingKeys: String, CodingKey {
+        case intensity
+        case mode
+    }
+    
     init(id: Int, deviceName: String, productType: ProductType, intensity:Int, mode:LightMode) {
         self.intensity = intensity
         self.mode = mode
@@ -31,15 +31,6 @@ class Light: Device {
     }
     
 
-    // for encode the  value
-    override func encode(to encoder: Encoder) throws {
-        var values = encoder.container(keyedBy: CodingKeys.self)
-        try? values.encodeIfPresent(intensity, forKey: .intensity)
-        try? values.encodeIfPresent(mode, forKey: .mode)
-        try super.encode(to: encoder)
-        }
-
-    
     enum LightMode: String,Codable {
         case on = "ON"
         case off = "OFF"

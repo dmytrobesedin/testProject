@@ -20,27 +20,27 @@ class DeviceListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "headerFooterView")
+        // addSubview
         view.addSubview(deviceListTableView)
         
-        
+        // subscribe delegate
         deviceListTableView.dataSource = self
         deviceListTableView.delegate = self
-        
-        
-        
-        
-        
-    
-        
     }
     
-
+    
     override func viewWillAppear(_ animated: Bool) {
         callToViewModelForUpdate()
-
     }
+    override func loadView() {
+        super.loadView()
+        guard let bundleID = Bundle.main.bundleIdentifier else {return}
+        UserDefaults.standard.removePersistentDomain(forName: bundleID)
+        
+    }
+    
+    
+    
     private func callToViewModelForUpdate() {
         self.devicesViewModel = DevicesViewModel()
         self.devicesViewModel.bindDevicesViewModelToController = { [weak self] in
@@ -60,23 +60,7 @@ extension DeviceListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        
-//        if let deviceUserDefaults = devicesViewModel.userDefaultManager.retrieveData () {
-//            print("result = \(deviceUserDefaults.devices[indexPath.row].productType)")
-//        }
-//        
-//         let deviceUserDefaultsList = deviceUserDefaults.devices[indexPath.row]
-//    
-//        print(deviceUserDefaultsList)
-        
-        
-        
-        
-      guard   let devicesList = devicesViewModel.deviceData?.devices[indexPath.row] else{ return UITableViewCell() }
-        
-        
-     //   guard   let devicesList = devicesViewModel.userDefaultManager.retrieveData() else{ return UITableViewCell() }
-      //  let devices = devicesList.devices[indexPath.row]
+        guard   let devicesList = devicesViewModel.deviceData?.devices[indexPath.row] else{ return UITableViewCell() }
         switch devicesList.productType {
         
         case .light:
@@ -110,9 +94,8 @@ extension DeviceListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-   
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let device = devicesViewModel.deviceData?.devices[indexPath.row] else{return}
         switch device.productType {
         case .light:

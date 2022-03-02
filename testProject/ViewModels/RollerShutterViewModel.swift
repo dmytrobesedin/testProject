@@ -9,19 +9,21 @@ import Foundation
 
 class RollerShutterViewModel {
     var rollerShutterDataModel: RollerShutter
-   init(rollerShutterDataModel: RollerShutter) {
-       self.rollerShutterDataModel = rollerShutterDataModel
-   }
-   
-  public var position: Int {
-    return rollerShutterDataModel.position
-   }
-
-   public var deviceName: String {
-    return rollerShutterDataModel.deviceName
+    init(rollerShutterDataModel: RollerShutter) {
+        self.rollerShutterDataModel = rollerShutterDataModel
     }
-   public var productType: String {
-    return rollerShutterDataModel.productType.rawValue
+    public var id: Int {
+        return rollerShutterDataModel.id
     }
-   
+    public var position: Int {
+        return rollerShutterDataModel.position
+    }
+    
+    public var deviceName: String {
+        return rollerShutterDataModel.deviceName
+    }
+    public var productType: String {
+        return rollerShutterDataModel.productType.rawValue
+    }
+    
 }

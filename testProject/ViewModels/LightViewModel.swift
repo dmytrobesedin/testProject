@@ -8,33 +8,30 @@ import UIKit
 import Foundation
 
 class LightViewModel {
-     var lightDataModel: Light
+    var lightDataModel: Light
     var userDefaultsManager = UserDefaultsManager()
     init(lightDataModel: Light) {
         self.lightDataModel = lightDataModel
     }
     
-   public var intensity: Int {
-    return lightDataModel.intensity
+    public var intensity: Int {
+        return lightDataModel.intensity
     }
     
     public var mode: Light.LightMode {
         return lightDataModel.mode
-     }
+    }
     
     public var deviceName: String {
         return lightDataModel.deviceName
-     }
+    }
     public var productType: String {
         return lightDataModel.productType.rawValue
-     }
+    }
     public var id: Int {
         return lightDataModel.id
-     }
-    
-    
-    //guard let lightObject = Light(intensity: Int(intensitySlider.value), mode:modeStatus) as? ModulotestAPIResponse else {return}
-   // lightViewModel?.userDefaultsManager.saveData(dataToSave: lightObject)
     }
- 
+    
+}
+
 

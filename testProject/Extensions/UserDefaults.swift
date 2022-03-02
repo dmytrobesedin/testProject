@@ -7,9 +7,6 @@
 
 import Foundation
 
-
-
-
 extension UserDefaults {
     func auth(forKey defaultName: String) -> ModulotestAPIResponse? {
         guard let data = data(forKey: defaultName) else { return nil }

@@ -50,9 +50,6 @@ class HeaterDetailViewController: UIViewController {
         self.view.addSubview(heaterTemperatureLabel)
         self.view.addSubview(heaterTemperatureSlider)
         
-        // add Target
-        heaterTemperatureSlider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
-        heaterModeSwitch.addTarget(self, action:  #selector(switchValueChanged), for: .valueChanged)
         
         // setUp
         setUpConstraints()
@@ -60,6 +57,12 @@ class HeaterDetailViewController: UIViewController {
         
     }
     
+    override func viewWillLayoutSubviews() {
+        // add Target
+        heaterTemperatureSlider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
+        heaterModeSwitch.addTarget(self, action:  #selector(switchValueChanged), for: .valueChanged)
+        
+    }
     
     private func setUpConstraints() {
         
@@ -89,7 +92,7 @@ class HeaterDetailViewController: UIViewController {
         
     }
     private   func setUpValues() {
-        navigationItem.title  = heaterViewModel?.deviceName
+        self.navigationItem.title  = heaterViewModel?.deviceName
         heaterTemperatureSlider.setValue(Float(heaterViewModel?.temperature ?? 7), animated: false)
         if heaterViewModel?.mode == .on {
             heaterModeSwitch.setOn(true, animated: false)
@@ -101,28 +104,19 @@ class HeaterDetailViewController: UIViewController {
     
     
     @objc func sliderValueChanged(sender: UISlider) {
-        guard sender != nil else {return  }
+        guard sender != nil else {return}
         let step: Float = 5
         let roundedValue = round(sender.value / step) * step
         sender.value = roundedValue
         
-        var heaterData = heaterViewModel?.heaterDataModel.temperature
-        heaterData = Int(sender.value)
-        print(sender.value)
-        guard let heaterId = heaterViewModel?.heaterDataModel.id  else {
-            return
-        }
-        
+        guard let heaterId = heaterViewModel?.id  else {return}
         let key  = "\(heaterId)|\(Heater.CodingKeys.temperature.rawValue)"
         UserDefaults.standard.removeObject(forKey: key)
-        
-        
-     UserDefaults.standard.setValue(Int(sender.value), forKey: key)
-        
+        UserDefaults.standard.setValue(Int(sender.value), forKey: key)
     }
     
     @objc func switchValueChanged(sender: UISwitch){
-        guard sender != nil else {return  }
+        guard sender != nil else {return}
         let heaterData:Bool
         if sender.isOn {
             heaterData = true
@@ -130,18 +124,9 @@ class HeaterDetailViewController: UIViewController {
         else{
             heaterData = false
         }
-        print(heaterData)
-        guard let heaterId = heaterViewModel?.heaterDataModel.id  else {
-            return
-        }
+        guard let heaterId = heaterViewModel?.id  else {return}
         let key  = "\(heaterId)|\(Heater.CodingKeys.mode.rawValue)"
         UserDefaults.standard.removeObject(forKey: key)
-        
-        
         UserDefaults.standard.setValue(heaterData, forKey: key)
-      //  UserDefaults.standard.setValue(String(sender.isOn), forKey: "\(heaterViewModel?.heaterDataModel.id) +\(Heater.CodingKeys.mode.rawValue )")
     }
-    
-    
-    
 }

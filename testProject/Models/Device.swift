@@ -34,14 +34,11 @@ class Device: NSObject, Codable {
         case rollerShutter = "RollerShutter"
     }
     
-    func saveToUD() {
-        
-    }
     
     func userDefaultsKeys() -> [String] {
         return []
     }
     
-
+    
 }
 

@@ -38,10 +38,10 @@ class RollerShutterDetailViewController: UIViewController {
         self.view.addSubview(rollerShutterPositionLabel)
         self.view.addSubview(rollerShutterPositionSlider)
         
-    
+        
         // addTarget
         self.rollerShutterPositionSlider.addTarget(self, action: #selector(changeRollerShutter ), for: .valueChanged)
-
+        
         
         
         self.navigationItem.title = rollerShutterViewModel?.deviceName
@@ -65,9 +65,12 @@ class RollerShutterDetailViewController: UIViewController {
     
     
     @objc func changeRollerShutter(sender: UISlider)  {
-        guard sender != nil else {return  }
-        guard var rollerShutterPosition = rollerShutterViewModel?.rollerShutterDataModel.position  else {return }
-        rollerShutterPosition = Int(sender.value)
-        print(rollerShutterPosition)
+        guard sender != nil else {return}
+        
+        guard let rollerShutterId = rollerShutterViewModel?.id  else {return}
+        let key  = "\(rollerShutterId)|\(RollerShutter.CodingKeys.position.rawValue)"
+        UserDefaults.standard.removeObject(forKey: key)
+        UserDefaults.standard.setValue(Int(sender.value), forKey: key)
+        
     }
 }

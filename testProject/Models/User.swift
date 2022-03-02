@@ -30,5 +30,4 @@ struct User: Codable {
 //        self.birthDate = try container.decode(Int.self, forKey: .birthDate)
 //        try super.init(from: decoder)
 //    }
-    
 }

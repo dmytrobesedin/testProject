@@ -14,8 +14,8 @@ class Heater: Device {
     var mode: Mode
     
     
-  
-    enum CodingKeys: String, CodingKey {
+    
+    public  enum CodingKeys: String, CodingKey {
         case temperature
         case mode
         
@@ -39,15 +39,4 @@ class Heater: Device {
                 String(super.id) + "|" + CodingKeys.mode.rawValue]
     }
     
-    // for encode the  value
-    override func encode(to encoder: Encoder) throws {
-        userDefaultsKeys().forEach { key in
-            if UserDefaults.standard.isKeyPresentInUserDefaults(key: key) {
-                
-            }
-        }
-        var values = encoder.container(keyedBy: CodingKeys.self)
-        try? values.encodeIfPresent(temperature, forKey: .temperature)
-        try? values.encodeIfPresent(mode, forKey: .mode)
-        }
 }
