@@ -16,29 +16,34 @@ class DeviceListViewController: UIViewController {
         tableview.register(RollerShutterTableViewCell.self, forCellReuseIdentifier: "rollerShutterCell")
         return tableview
     }()
-    private var devicesViewModel: DevicesViewModel!
-    
+    private var devicesViewModel: DevicesViewModel
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // addSubview
         view.addSubview(deviceListTableView)
         
         // subscribe delegate
         deviceListTableView.dataSource = self
         deviceListTableView.delegate = self
+        
+        // delete items from UserDefaults
+        //devicesViewModel.userDefaultManager?.deleteFromUserDefaults()
+        
+    }
+    init(devicesViewModel:DevicesViewModel){
+        self.devicesViewModel = devicesViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         callToViewModelForUpdate()
     }
-    override func loadView() {
-        super.loadView()
-        guard let bundleID = Bundle.main.bundleIdentifier else {return}
-        UserDefaults.standard.removePersistentDomain(forName: bundleID)
-        
-    }
-    
     
     
     private func callToViewModelForUpdate() {
@@ -100,21 +105,18 @@ extension DeviceListViewController: UITableViewDelegate, UITableViewDataSource {
         switch device.productType {
         case .light:
             guard let lightDevice = device as? Light else{return}
-            let vc = LightDetailViewController()
-            vc.lightViewModel = LightViewModel(lightDataModel: lightDevice)
-            vc.view.backgroundColor = .white
+            let lightViewModel = LightViewModel(lightDataModel: lightDevice)
+            let vc = LightDetailViewController(lightViewModel: lightViewModel)
             navigationController?.pushViewController(vc, animated: false)
         case .heater:
             guard let heaterDevice = device as? Heater else{return}
-            let vc = HeaterDetailViewController()
-            vc.heaterViewModel = HeaterViewModel(heaterDataModel:  heaterDevice)
-            vc.view.backgroundColor = .white
+            let heaterViewModel = HeaterViewModel(heaterDataModel:  heaterDevice)
+            let vc = HeaterDetailViewController(heaterViewModel: heaterViewModel)
             navigationController?.pushViewController(vc, animated: false)
         case .rollerShutter:
             guard let rollerShutterDevice = device as? RollerShutter else{return}
-            let vc = RollerShutterDetailViewController()
-            vc.rollerShutterViewModel = RollerShutterViewModel(rollerShutterDataModel: rollerShutterDevice)
-            vc.view.backgroundColor = .white
+            let rollerShutterViewModel = RollerShutterViewModel(rollerShutterDataModel: rollerShutterDevice)
+            let vc = RollerShutterDetailViewController(rollerShutterViewModel: rollerShutterViewModel)
             navigationController?.pushViewController(vc, animated: false)
         }
     }

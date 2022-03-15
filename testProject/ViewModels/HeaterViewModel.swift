@@ -7,7 +7,8 @@
 
 import Foundation
 class HeaterViewModel {
-    var heaterDataModel: Heater
+    private var heaterDataModel: Heater
+    public var userDefaultsManager = UserDefaultsManager()
     init(heaterDataModel: Heater) {
         self.heaterDataModel = heaterDataModel
     }

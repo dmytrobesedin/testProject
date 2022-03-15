@@ -41,13 +41,13 @@ struct ModulotestAPIResponse:  Codable {
             let productType = try device.decode(DeviceTypes.self, forKey: DeviceTypeKey.productType)
             switch productType {
             case .light:
-               // print("found a light")
+                // print("found a light")
                 devices.append(try devicesArray.decode(Light.self))
             case .heater:
-              //  print("found a heater")
+                //  print("found a heater")
                 devices.append(try devicesArray.decode(Heater.self))
             case .rollerShutter:
-               // print("found a rollerShutter")
+                // print("found a rollerShutter")
                 devices.append(try devicesArray.decode(RollerShutter.self))
             }
         }

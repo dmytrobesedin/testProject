@@ -10,7 +10,7 @@ import Foundation
 
 class APIService: NSObject {
     static let urlString = "http://storage42.com/modulotest/data.json"
-    let url = URL(string: urlString)!
+    private let url = URL(string: urlString)!
     
     func apiToGetDeviceData(completion : @escaping (ModulotestAPIResponse ) -> ()){
         let dataTask =  URLSession.shared.dataTask(with:url) { (data, urlResponse, anotherError) in

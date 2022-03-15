@@ -8,8 +8,8 @@ import UIKit
 import Foundation
 
 class LightViewModel {
-    var lightDataModel: Light
-    var userDefaultsManager = UserDefaultsManager()
+    private var lightDataModel: Light
+    public var userDefaultsManager = UserDefaultsManager()
     init(lightDataModel: Light) {
         self.lightDataModel = lightDataModel
     }

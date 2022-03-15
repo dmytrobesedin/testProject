@@ -33,7 +33,7 @@ class RollerShutterTableViewCell: UITableViewCell {
             self.imageView?.image = UIImage(named: "DeviceRollerShutterIcon")
         }
         else{
-            self.detailTextLabel?.text = "opened at".localized() + "\(rollerShutterViewModel.position)%"
+            self.detailTextLabel?.text = "opened at ".localized() + "\(rollerShutterViewModel.position)%"
             self.imageView?.image = UIImage(named: "DeviceRollerShutterIcon")
         }
     }

@@ -30,7 +30,7 @@ class Light: Device {
         try super.init(from: decoder)
     }
     
-
+    
     enum LightMode: String,Codable {
         case on = "ON"
         case off = "OFF"

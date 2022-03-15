@@ -40,29 +40,38 @@ class HeaterDetailViewController: UIViewController {
     
     
     
-    public var heaterViewModel:HeaterViewModel?
+    var heaterViewModel:HeaterViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        
+        
         // add subview
         self.view.addSubview(heaterModeLabel)
         self.view.addSubview(heaterModeSwitch)
         self.view.addSubview(heaterTemperatureLabel)
         self.view.addSubview(heaterTemperatureSlider)
         
+        // add target
+        heaterTemperatureSlider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
+        heaterModeSwitch.addTarget(self, action:  #selector(switchValueChanged), for: .valueChanged)
         
         // setUp
         setUpConstraints()
         setUpValues()
         
     }
-    
-    override func viewWillLayoutSubviews() {
-        // add Target
-        heaterTemperatureSlider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
-        heaterModeSwitch.addTarget(self, action:  #selector(switchValueChanged), for: .valueChanged)
-        
+    init(heaterViewModel: HeaterViewModel) {
+        self.heaterViewModel = heaterViewModel
+        super.init(nibName: nil, bundle: nil)
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     
     private func setUpConstraints() {
         
@@ -92,9 +101,9 @@ class HeaterDetailViewController: UIViewController {
         
     }
     private   func setUpValues() {
-        self.navigationItem.title  = heaterViewModel?.deviceName
-        heaterTemperatureSlider.setValue(Float(heaterViewModel?.temperature ?? 7), animated: false)
-        if heaterViewModel?.mode == .on {
+        self.navigationItem.title  = heaterViewModel.deviceName
+        heaterTemperatureSlider.setValue(Float(heaterViewModel.temperature ?? 7), animated: false)
+        if heaterViewModel.mode == .on {
             heaterModeSwitch.setOn(true, animated: false)
         } else {
             heaterModeSwitch.setOn(false, animated: false)
@@ -109,10 +118,9 @@ class HeaterDetailViewController: UIViewController {
         let roundedValue = round(sender.value / step) * step
         sender.value = roundedValue
         
-        guard let heaterId = heaterViewModel?.id  else {return}
-        let key  = "\(heaterId)|\(Heater.CodingKeys.temperature.rawValue)"
-        UserDefaults.standard.removeObject(forKey: key)
-        UserDefaults.standard.setValue(Int(sender.value), forKey: key)
+        let key  = "\(heaterViewModel.id)|\(Heater.CodingKeys.temperature.rawValue)"
+        heaterViewModel.userDefaultsManager.defaults.removeObject(forKey: key)
+        heaterViewModel.userDefaultsManager.defaults.setValue(Int(sender.value), forKey: key)
     }
     
     @objc func switchValueChanged(sender: UISwitch){
@@ -124,9 +132,9 @@ class HeaterDetailViewController: UIViewController {
         else{
             heaterData = false
         }
-        guard let heaterId = heaterViewModel?.id  else {return}
-        let key  = "\(heaterId)|\(Heater.CodingKeys.mode.rawValue)"
-        UserDefaults.standard.removeObject(forKey: key)
-        UserDefaults.standard.setValue(heaterData, forKey: key)
+        
+        let key  = "\(heaterViewModel.id )|\(Heater.CodingKeys.mode.rawValue)"
+        heaterViewModel.userDefaultsManager.defaults.removeObject(forKey: key)
+        heaterViewModel.userDefaultsManager.defaults.setValue(heaterData, forKey: key)
     }
 }

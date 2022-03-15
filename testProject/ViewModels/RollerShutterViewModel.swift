@@ -8,7 +8,8 @@
 import Foundation
 
 class RollerShutterViewModel {
-    var rollerShutterDataModel: RollerShutter
+    private var rollerShutterDataModel: RollerShutter
+    public var userDefaultsManager = UserDefaultsManager()
     init(rollerShutterDataModel: RollerShutter) {
         self.rollerShutterDataModel = rollerShutterDataModel
     }

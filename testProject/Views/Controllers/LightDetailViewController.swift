@@ -43,12 +43,22 @@ class LightDetailViewController: UIViewController {
     
     
     
-    public   var lightViewModel: LightViewModel?
+    var lightViewModel: LightViewModel
+    
+    init(lightViewModel: LightViewModel) {
+        self.lightViewModel = lightViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .white
         
         
         // addTarget
@@ -69,10 +79,11 @@ class LightDetailViewController: UIViewController {
     
     
     private func setUpValue() {
-        navigationItem.title  = lightViewModel?.deviceName
-        self.intensitySlider.setValue(Float(lightViewModel?.intensity ?? 0), animated: false)
+        navigationItem.title  = lightViewModel.deviceName
         
-        if lightViewModel?.mode == .on {
+        self.intensitySlider.setValue(Float(lightViewModel.intensity), animated: false)
+        
+        if lightViewModel.mode == .on {
             modeSwitch.setOn(true, animated: false)
         } else {
             modeSwitch.setOn(false, animated: false)
@@ -101,21 +112,16 @@ class LightDetailViewController: UIViewController {
         ])
     }
     
-    override func viewWillLayoutSubviews() {
-        
-    }
-    
-    @objc func changeSlider(sender: UISlider){
+    @objc private func changeSlider(sender: UISlider){
         guard sender != nil else {return}
-        guard let lightId = lightViewModel?.id  else {return}
-        let key  = "\(lightId)|\(Light.CodingKeys.intensity.rawValue)"
-        UserDefaults.standard.removeObject(forKey: key)
-        UserDefaults.standard.setValue(Int(sender.value), forKey: key)
+        let key  = "\(lightViewModel.id)|\(Light.CodingKeys.intensity.rawValue)"
+        lightViewModel.userDefaultsManager.defaults.removeObject(forKey: key)
+        lightViewModel.userDefaultsManager.defaults.setValue(Int(sender.value), forKey: key)
     }
     
     
-    @objc func changeSwitch(sender: UISwitch){
-        guard sender != nil else {return  }
+    @objc  private func changeSwitch(sender: UISwitch){
+        guard sender != nil else {return}
         let lightData: Bool
         if sender.isOn {
             lightData = true
@@ -123,9 +129,9 @@ class LightDetailViewController: UIViewController {
         else{
             lightData = false
         }
-        guard let lightId = lightViewModel?.id  else {return}
-        let key  = "\(lightId)|\(Light.CodingKeys.mode.rawValue)"
-        UserDefaults.standard.removeObject(forKey: key)
-        UserDefaults.standard.setValue(lightData, forKey: key)
+        
+        let key  = "\(lightViewModel.id)|\(Light.CodingKeys.mode.rawValue)"
+        lightViewModel.userDefaultsManager.defaults.removeObject(forKey: key)
+        lightViewModel.userDefaultsManager.defaults.setValue(lightData, forKey: key)
     }
 }

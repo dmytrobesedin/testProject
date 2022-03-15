@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 // MARK: - Address
 struct Address: Codable {
     let city: String

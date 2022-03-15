@@ -7,10 +7,8 @@
 
 import UIKit
 
-extension UIView
- {
-    func makeVertical()
-    {
-         transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
+extension UIView {
+    func makeVertical(){
+        transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
     }
- }
+}
