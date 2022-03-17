@@ -26,5 +26,7 @@ class RollerShutterViewModel {
     public var productType: String {
         return rollerShutterDataModel.productType.rawValue
     }
-    
+    public func callFuncToSetUpRollerShutterPosition(key: String, value: Float) {
+        userDefaultsManager.setUpSliderValue(key, value)
+    }
 }

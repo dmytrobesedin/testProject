@@ -7,16 +7,22 @@
 
 
 import Foundation
+
+protocol DevicesViewModelDelegate {
+    func didFinishUpdatingData()
+}
+
 class DevicesViewModel: NSObject {
     private var apiService: APIService?
     public var userDefaultManager: UserDefaultsManager?
     private(set) var deviceData: ModulotestAPIResponse? {
         didSet {
-            self.bindDevicesViewModelToController()
+            self.connectDevicesViewModelToController()
         }
     }
+    var devicesViewModelDelegate: DevicesViewModelDelegate?
     
-    public var bindDevicesViewModelToController : (() -> ()) = {}
+    public var connectDevicesViewModelToController : (() -> ()) = {}
     
     override init() {
         super.init()
@@ -25,40 +31,25 @@ class DevicesViewModel: NSObject {
         self.callFuncToGetDecodeData()
     }
     
-    
     private  func callFuncToGetDecodeData()  {
         DispatchQueue.global().async { [weak self] in
-            self?.apiService?.apiToGetDeviceData { apiResponseData in
-                
+            guard let self = self else { return }
+            self.apiService?.apiToGetDeviceData { apiResponseData in
                 apiResponseData.devices.forEach { device in
-                    
                     device.userDefaultsKeys().forEach { key in
-                        
-                        if UserDefaults.standard.isKeyPresentInUserDefaults(key: key) {
-                            let arrayKey = key.components(separatedBy: "|")
-                            
-                            if device.productType == .heater {
-                                guard  let heaterDevice  = device as? Heater else{return}
-                                self?.userDefaultManager?.setHeaterDeviceUserDefaults(key: key, arrayKey: arrayKey, heaterDevice: heaterDevice)
-                                
-                            }
-                            
-                            else if device.productType == .light {
-                                guard  let lightDevice  = device as? Light else{return}
-                                self?.userDefaultManager?.setLightDeviceUserDefaults(key: key, arrayKey: arrayKey, lightDevice: lightDevice)
-                                
-                            }
-                            else if device.productType == .rollerShutter {
-                                guard  let rollerShutterDevice  = device as? RollerShutter else{return}
-                                self?.userDefaultManager?.setRollerShutterDeviceUserDefaults(key: key, arrayKey: arrayKey, rollerShutterDevice: rollerShutterDevice)
-                                
-                            }
-                        }
+                        self.userDefaultManager?.checkKeyInUserDefaults(key, device)
                     }
-                    
                 }
-                self?.deviceData = apiResponseData
+                self.deviceData = apiResponseData
             }
         }
+    }
+    func callFuncToUpdateData() {
+        self.deviceData?.devices.forEach({ device in
+            device.userDefaultsKeys().forEach { key in
+                self.userDefaultManager?.checkKeyInUserDefaults(key, device)
+            }
+        })
+        self.devicesViewModelDelegate?.didFinishUpdatingData()
     }
 }

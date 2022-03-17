@@ -9,28 +9,19 @@ import UIKit
 
 class DeviceListViewController: UIViewController {
     
-    private var deviceListTableView: UITableView = {
+    private var devicesListTableView: UITableView = {
         let tableview = UITableView(frame: UIScreen.main.bounds, style: .plain)
         tableview.register(LightTableViewCell.self, forCellReuseIdentifier: "lightCell")
         tableview.register(HeaterTableViewCell.self, forCellReuseIdentifier: "heaterCell")
         tableview.register(RollerShutterTableViewCell.self, forCellReuseIdentifier: "rollerShutterCell")
         return tableview
     }()
+    
     private var devicesViewModel: DevicesViewModel
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // addSubview
-        view.addSubview(deviceListTableView)
-        
-        // subscribe delegate
-        deviceListTableView.dataSource = self
-        deviceListTableView.delegate = self
-        
-        // delete items from UserDefaults
-        //devicesViewModel.userDefaultManager?.deleteFromUserDefaults()
-        
-    }
+    
+    private var isSelectedRow = false
+    private var selectedIndexPath = IndexPath(row: 0, section: 0)
+    
     init(devicesViewModel:DevicesViewModel){
         self.devicesViewModel = devicesViewModel
         super.init(nibName: nil, bundle: nil)
@@ -40,17 +31,44 @@ class DeviceListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        callToViewModelForUpdate()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // addSubview
+        view.addSubview(devicesListTableView)
+        
+        // subscribe delegate
+        devicesListTableView.dataSource = self
+        devicesListTableView.delegate = self
+        devicesViewModel.devicesViewModelDelegate = self
+        
+        // load  data
+        callToViewModelForLoadData()
+        
+        // delete items from UserDefaults
+        // devicesViewModel.userDefaultManager?.deleteFromUserDefaults()
     }
     
     
-    private func callToViewModelForUpdate() {
-        self.devicesViewModel = DevicesViewModel()
-        self.devicesViewModel.bindDevicesViewModelToController = { [weak self] in
-            DispatchQueue.main.async {
-                self?.deviceListTableView.reloadData()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        callToViewModelForUpdateSelectedRow(isSelectedRow)
+    }
+    
+    
+    private func callToViewModelForUpdateSelectedRow(_ isSelected: Bool)  {
+        if isSelected {
+            devicesViewModel.callFuncToUpdateData()
+        }
+    }
+    
+    
+    
+    private func callToViewModelForLoadData() {
+        self.devicesViewModel.connectDevicesViewModelToController = { [weak self] in
+            guard let self = self else {return}
+            DispatchQueue.main.async{
+                self.devicesListTableView.reloadData()
             }
         }
     }
@@ -58,7 +76,16 @@ class DeviceListViewController: UIViewController {
 
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
-extension DeviceListViewController: UITableViewDelegate, UITableViewDataSource {
+extension DeviceListViewController: UITableViewDelegate, UITableViewDataSource, DevicesViewModelDelegate{
+    
+    func didFinishUpdatingData() {
+        DispatchQueue.main.async {
+            self.devicesListTableView.reloadRows(at: [self.selectedIndexPath], with: .none)
+        }
+        self.isSelectedRow = false
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return devicesViewModel.deviceData?.devices.count  ?? 0
     }
@@ -101,6 +128,8 @@ extension DeviceListViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        isSelectedRow = true
+        selectedIndexPath = indexPath
         guard let device = devicesViewModel.deviceData?.devices[indexPath.row] else{return}
         switch device.productType {
         case .light:
@@ -119,6 +148,7 @@ extension DeviceListViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = RollerShutterDetailViewController(rollerShutterViewModel: rollerShutterViewModel)
             navigationController?.pushViewController(vc, animated: false)
         }
+        
     }
 }
 

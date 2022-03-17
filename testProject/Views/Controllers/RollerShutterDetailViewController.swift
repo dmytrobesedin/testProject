@@ -78,8 +78,7 @@ class RollerShutterDetailViewController: UIViewController {
         guard sender != nil else {return}
         
         let key  = "\(rollerShutterViewModel.id)|\(RollerShutter.CodingKeys.position.rawValue)"
-        rollerShutterViewModel.userDefaultsManager.defaults.removeObject(forKey: key)
-        rollerShutterViewModel.userDefaultsManager.defaults.setValue(Int(sender.value), forKey: key)
+        rollerShutterViewModel.callFuncToSetUpRollerShutterPosition(key: key, value: sender.value)
         
     }
 }

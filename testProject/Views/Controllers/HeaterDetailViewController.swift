@@ -112,6 +112,7 @@ class HeaterDetailViewController: UIViewController {
     }
     
     
+   
     @objc func sliderValueChanged(sender: UISlider) {
         guard sender != nil else {return}
         let step: Float = 5
@@ -119,22 +120,20 @@ class HeaterDetailViewController: UIViewController {
         sender.value = roundedValue
         
         let key  = "\(heaterViewModel.id)|\(Heater.CodingKeys.temperature.rawValue)"
-        heaterViewModel.userDefaultsManager.defaults.removeObject(forKey: key)
-        heaterViewModel.userDefaultsManager.defaults.setValue(Int(sender.value), forKey: key)
+        heaterViewModel.callFuncToSetUpHeaterTemperature(key: key, value: sender.value)
     }
     
     @objc func switchValueChanged(sender: UISwitch){
         guard sender != nil else {return}
-        let heaterData:Bool
+        let heaterValue:Bool
         if sender.isOn {
-            heaterData = true
+            heaterValue = true
         }
         else{
-            heaterData = false
+            heaterValue = false
         }
         
         let key  = "\(heaterViewModel.id )|\(Heater.CodingKeys.mode.rawValue)"
-        heaterViewModel.userDefaultsManager.defaults.removeObject(forKey: key)
-        heaterViewModel.userDefaultsManager.defaults.setValue(heaterData, forKey: key)
+        heaterViewModel.callFuncToSetUpHeaterMode(key: key, value: heaterValue)
     }
 }

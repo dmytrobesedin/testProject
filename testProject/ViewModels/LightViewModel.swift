@@ -10,6 +10,10 @@ import Foundation
 class LightViewModel {
     private var lightDataModel: Light
     public var userDefaultsManager = UserDefaultsManager()
+    
+    
+    
+    
     init(lightDataModel: Light) {
         self.lightDataModel = lightDataModel
     }
@@ -32,6 +36,13 @@ class LightViewModel {
         return lightDataModel.id
     }
     
+    public func callFuncToSetUpLightIntensity(key: String, value: Float) {
+        userDefaultsManager.setUpSliderValue(key, value)
+        
+    }
+    public func callFuncToSetUpLightMode(key: String, value: Bool) {
+        userDefaultsManager.setUpSwitchValue(key, value)
+    }
 }
 
 

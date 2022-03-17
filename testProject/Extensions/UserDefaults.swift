@@ -14,7 +14,5 @@ extension UserDefaults {
     func deleteFromUserDefaults() {
         guard let bundleID = Bundle.main.bundleIdentifier else {return}
         UserDefaults.standard.removePersistentDomain(forName: bundleID)
-        
     }
-    
 }

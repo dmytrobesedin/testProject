@@ -31,4 +31,10 @@ class HeaterViewModel {
         return heaterDataModel.productType.rawValue
     }
     
+    public func callFuncToSetUpHeaterTemperature(key: String, value: Float) {
+        userDefaultsManager.setUpSliderValue(key, value)
+    }
+    public func callFuncToSetUpHeaterMode(key: String, value: Bool) {
+        userDefaultsManager.setUpSwitchValue(key, value)
+    }
 }

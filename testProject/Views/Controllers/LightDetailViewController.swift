@@ -112,26 +112,28 @@ class LightDetailViewController: UIViewController {
         ])
     }
     
+     
+    
     @objc private func changeSlider(sender: UISlider){
         guard sender != nil else {return}
         let key  = "\(lightViewModel.id)|\(Light.CodingKeys.intensity.rawValue)"
-        lightViewModel.userDefaultsManager.defaults.removeObject(forKey: key)
-        lightViewModel.userDefaultsManager.defaults.setValue(Int(sender.value), forKey: key)
+        lightViewModel.callFuncToSetUpLightIntensity(key: key, value: sender.value)
     }
     
     
+  
+    
     @objc  private func changeSwitch(sender: UISwitch){
         guard sender != nil else {return}
-        let lightData: Bool
+        let lightValue: Bool
         if sender.isOn {
-            lightData = true
+            lightValue = true
         }
         else{
-            lightData = false
+            lightValue = false
         }
         
         let key  = "\(lightViewModel.id)|\(Light.CodingKeys.mode.rawValue)"
-        lightViewModel.userDefaultsManager.defaults.removeObject(forKey: key)
-        lightViewModel.userDefaultsManager.defaults.setValue(lightData, forKey: key)
+        lightViewModel.callFuncToSetUpLightMode(key: key, value: lightValue)
     }
 }
