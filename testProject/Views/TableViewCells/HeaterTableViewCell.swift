@@ -11,13 +11,10 @@ class HeaterTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        
     }
     
     public func configureHeaterCell(heaterViewModel: HeaterViewModel) {
@@ -29,7 +26,6 @@ class HeaterTableViewCell: UITableViewCell {
         else {
             self.detailTextLabel?.text = "mode - \(heaterViewModel.mode.rawValue)".localized()
             self.imageView?.image = UIImage(named: "DeviceHeaterOffIcon")
-            
         }
     }
 }

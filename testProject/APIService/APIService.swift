@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class APIService: NSObject {
     static let urlString = "http://storage42.com/modulotest/data.json"
     private let url = URL(string: urlString)!
@@ -15,7 +14,6 @@ class APIService: NSObject {
     func apiToGetDeviceData(completion : @escaping (ModulotestAPIResponse ) -> ()){
         let dataTask =  URLSession.shared.dataTask(with:url) { (data, urlResponse, anotherError) in
             guard let data = data  else{return}
-            
             let jsonDecoder = JSONDecoder()
             do {
                 let decodeData = try jsonDecoder.decode(ModulotestAPIResponse.self, from: data)
@@ -27,7 +25,6 @@ class APIService: NSObject {
         }
         dataTask.resume()
     }
-    
 }
 
 
