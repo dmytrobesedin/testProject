@@ -9,13 +9,12 @@ import Foundation
 
 class LightViewModel {
     private var lightDataModel: Light
-    public var userDefaultsManager = UserDefaultsManager()
+    private var lightVC:UIViewController?
+    private var userDefaultsManager = UserDefaultsManager()
     
-    
-    
-    
-    init(lightDataModel: Light) {
-        self.lightDataModel = lightDataModel
+    required init(device: Light) {
+        self.lightDataModel = device
+        self.lightVC = LightDetailView(lightViewModel: self)
     }
     
     public var intensity: Int {
@@ -36,13 +35,26 @@ class LightViewModel {
         return lightDataModel.id
     }
     
-    public func callFuncToSetUpLightIntensity(key: String, value: Float) {
+    public func setUpLightIntensity(key: String, value: Float) {
         userDefaultsManager.setUpSliderValue(key, value)
         
     }
-    public func callFuncToSetUpLightMode(key: String, value: Bool) {
+    
+    public func setUpLightMode(key: String, value: Bool) {
         userDefaultsManager.setUpSwitchValue(key, value)
     }
 }
+
+extension LightViewModel: DeviceViewModelProtocol{
+    func configureDeviceVC() -> UIViewController {
+        guard let vc = lightVC else {
+            let vc = LightDetailView(lightViewModel: self)
+            self.lightVC = vc
+            return vc
+        }
+        return vc
+    }
+}
+
 
 

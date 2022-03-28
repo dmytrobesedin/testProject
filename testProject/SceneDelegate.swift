@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let devicesViewModel = DevicesViewModel()
-        let mainVC = DeviceListViewController(devicesViewModel: devicesViewModel)
+        let mainVC = DeviceListView(devicesViewModel: devicesViewModel)
         let navigationController = UINavigationController(rootViewController: mainVC)
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene

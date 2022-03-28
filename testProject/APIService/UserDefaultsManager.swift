@@ -8,7 +8,6 @@ import UIKit
 import Foundation
 
 class UserDefaultsManager: UserDefaults {
-    
     public let defaults = UserDefaults.standard
     
     public func setHeaterDeviceUserDefaults( key:String, arrayKey: [String], heaterDevice:Heater) {
@@ -69,14 +68,16 @@ class UserDefaultsManager: UserDefaults {
             }
         }
     }
+    
     public func setUpSliderValue(_ key: String, _ value: Float) {
         defaults.removeObject(forKey: key)
         defaults.setValue(Int(value), forKey: key)
     }
+    
     public func setUpSwitchValue(_ key: String, _ value: Bool) {
         defaults.removeObject(forKey: key)
         defaults.setValue(value, forKey: key)
-    }
+    } 
 }
 
 

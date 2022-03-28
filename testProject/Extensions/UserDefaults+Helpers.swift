@@ -11,7 +11,8 @@ extension UserDefaults {
     func isKeyPresentInUserDefaults(key: String) -> Bool {
         return UserDefaults.standard.object(forKey: key) != nil
     }
-    func deleteFromUserDefaults() {
+    
+    func cleanUserDefaults() {
         guard let bundleID = Bundle.main.bundleIdentifier else {return}
         UserDefaults.standard.removePersistentDomain(forName: bundleID)
     }

@@ -8,17 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		2D117AC827CCF35700B546DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D117AC727CCF35700B546DF /* Main.storyboard */; };
-		2D3791B827BECE26007D4F91 /* LightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3791B727BECE26007D4F91 /* LightDetailViewController.swift */; };
+		2D3791B827BECE26007D4F91 /* LightDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3791B727BECE26007D4F91 /* LightDetailView.swift */; };
 		2D3791BA27BF272F007D4F91 /* LightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3791B927BF272F007D4F91 /* LightViewModel.swift */; };
 		2D3791BC27C2748E007D4F91 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3791BB27C2748E007D4F91 /* UserDefaultsManager.swift */; };
 		2D3791BF27C27AE1007D4F91 /* UIView+Rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3791BE27C27AE1007D4F91 /* UIView+Rotate.swift */; };
 		2D3791C227C2820C007D4F91 /* LightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3791C127C2820C007D4F91 /* LightTableViewCell.swift */; };
 		2D3791C627C28E33007D4F91 /* HeaterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3791C527C28E33007D4F91 /* HeaterTableViewCell.swift */; };
 		2D3791C827C28E4B007D4F91 /* RollerShutterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3791C727C28E4B007D4F91 /* RollerShutterTableViewCell.swift */; };
-		2D8B434727C554A70037D8C5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B434627C554A70037D8C5 /* UserDefaults.swift */; };
+		2D5C71C227E94345004E1D7E /* DevicesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5C71C127E94345004E1D7E /* DevicesFactory.swift */; };
+		2D70CCA427ED1E34003A8205 /* DeviceViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D70CCA327ED1E34003A8205 /* DeviceViewModelProtocol.swift */; };
+		2D70CCA627ED1E4C003A8205 /* DevicesViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D70CCA527ED1E4C003A8205 /* DevicesViewModelDelegate.swift */; };
+		2D70CCAB27F222A0003A8205 /* DeviceCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D70CCAA27F222A0003A8205 /* DeviceCellProtocol.swift */; };
+		2D70CCAD27F22302003A8205 /* DeviceCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D70CCAC27F22302003A8205 /* DeviceCellFactory.swift */; };
+		2D8B434727C554A70037D8C5 /* UserDefaults+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B434627C554A70037D8C5 /* UserDefaults+Helpers.swift */; };
 		2DCD81F227BBF84E00BF08AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F127BBF84E00BF08AC /* AppDelegate.swift */; };
 		2DCD81F427BBF84F00BF08AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F327BBF84F00BF08AC /* SceneDelegate.swift */; };
-		2DCD81F627BBF84F00BF08AC /* DeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F527BBF84F00BF08AC /* DeviceListViewController.swift */; };
+		2DCD81F627BBF84F00BF08AC /* DeviceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F527BBF84F00BF08AC /* DeviceListView.swift */; };
 		2DCD81FB27BBF85100BF08AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCD81FA27BBF85100BF08AC /* Assets.xcassets */; };
 		2DCD81FE27BBF85100BF08AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCD81FC27BBF85100BF08AC /* LaunchScreen.storyboard */; };
 		2DCD820F27BC0FE800BF08AC /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD820E27BC0FE800BF08AC /* Light.swift */; };
@@ -32,26 +37,31 @@
 		2DCD822127BC495400BF08AC /* DevicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD822027BC495400BF08AC /* DevicesViewModel.swift */; };
 		2DCDE3D127C51E35001DB295 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDE3D027C51E35001DB295 /* String+Localization.swift */; };
 		2DCDE3D427C520A0001DB295 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DCDE3D627C520A0001DB295 /* Localizable.strings */; };
-		2DD3D74227C305FA0082957E /* HeaterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD3D74127C305FA0082957E /* HeaterDetailViewController.swift */; };
+		2DD3D74227C305FA0082957E /* HeaterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD3D74127C305FA0082957E /* HeaterDetailView.swift */; };
 		2DD3D74427C30AA40082957E /* HeaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD3D74327C30AA40082957E /* HeaterViewModel.swift */; };
 		2DD3D74627C31E6E0082957E /* RollerShutterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD3D74527C31E6E0082957E /* RollerShutterViewModel.swift */; };
-		2DD3D74827C31EF30082957E /* RollerShutterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD3D74727C31EF30082957E /* RollerShutterDetailViewController.swift */; };
+		2DD3D74827C31EF30082957E /* RollerShutterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD3D74727C31EF30082957E /* RollerShutterDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2D117AC727CCF35700B546DF /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		2D3791B727BECE26007D4F91 /* LightDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetailViewController.swift; sourceTree = "<group>"; };
+		2D3791B727BECE26007D4F91 /* LightDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetailView.swift; sourceTree = "<group>"; };
 		2D3791B927BF272F007D4F91 /* LightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewModel.swift; sourceTree = "<group>"; };
 		2D3791BB27C2748E007D4F91 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		2D3791BE27C27AE1007D4F91 /* UIView+Rotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Rotate.swift"; sourceTree = "<group>"; };
 		2D3791C127C2820C007D4F91 /* LightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTableViewCell.swift; sourceTree = "<group>"; };
 		2D3791C527C28E33007D4F91 /* HeaterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterTableViewCell.swift; sourceTree = "<group>"; };
 		2D3791C727C28E4B007D4F91 /* RollerShutterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterTableViewCell.swift; sourceTree = "<group>"; };
-		2D8B434627C554A70037D8C5 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		2D5C71C127E94345004E1D7E /* DevicesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesFactory.swift; sourceTree = "<group>"; };
+		2D70CCA327ED1E34003A8205 /* DeviceViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewModelProtocol.swift; sourceTree = "<group>"; };
+		2D70CCA527ED1E4C003A8205 /* DevicesViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewModelDelegate.swift; sourceTree = "<group>"; };
+		2D70CCAA27F222A0003A8205 /* DeviceCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCellProtocol.swift; sourceTree = "<group>"; };
+		2D70CCAC27F22302003A8205 /* DeviceCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCellFactory.swift; sourceTree = "<group>"; };
+		2D8B434627C554A70037D8C5 /* UserDefaults+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Helpers.swift"; sourceTree = "<group>"; };
 		2DCD81EE27BBF84E00BF08AC /* testProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCD81F127BBF84E00BF08AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DCD81F327BBF84F00BF08AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2DCD81F527BBF84F00BF08AC /* DeviceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListViewController.swift; sourceTree = "<group>"; };
+		2DCD81F527BBF84F00BF08AC /* DeviceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListView.swift; sourceTree = "<group>"; };
 		2DCD81FA27BBF85100BF08AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DCD81FD27BBF85100BF08AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DCD81FF27BBF85100BF08AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,10 +77,10 @@
 		2DCDE3D027C51E35001DB295 /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		2DCDE3D527C520A0001DB295 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2DCDE3D727C520BC001DB295 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		2DD3D74127C305FA0082957E /* HeaterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterDetailViewController.swift; sourceTree = "<group>"; };
+		2DD3D74127C305FA0082957E /* HeaterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterDetailView.swift; sourceTree = "<group>"; };
 		2DD3D74327C30AA40082957E /* HeaterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaterViewModel.swift; sourceTree = "<group>"; };
 		2DD3D74527C31E6E0082957E /* RollerShutterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterViewModel.swift; sourceTree = "<group>"; };
-		2DD3D74727C31EF30082957E /* RollerShutterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterDetailViewController.swift; sourceTree = "<group>"; };
+		2DD3D74727C31EF30082957E /* RollerShutterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollerShutterDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,20 +99,9 @@
 			children = (
 				2D3791BE27C27AE1007D4F91 /* UIView+Rotate.swift */,
 				2DCDE3D027C51E35001DB295 /* String+Localization.swift */,
-				2D8B434627C554A70037D8C5 /* UserDefaults.swift */,
+				2D8B434627C554A70037D8C5 /* UserDefaults+Helpers.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		2D3791C027C281C0007D4F91 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				2D3791B727BECE26007D4F91 /* LightDetailViewController.swift */,
-				2DCD81F527BBF84F00BF08AC /* DeviceListViewController.swift */,
-				2DD3D74127C305FA0082957E /* HeaterDetailViewController.swift */,
-				2DD3D74727C31EF30082957E /* RollerShutterDetailViewController.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		2D3791C927C2A496007D4F91 /* TableViewCells */ = {
@@ -113,6 +112,25 @@
 				2D3791C127C2820C007D4F91 /* LightTableViewCell.swift */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		2D70CCA227EBB99A003A8205 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2D70CCA327ED1E34003A8205 /* DeviceViewModelProtocol.swift */,
+				2D70CCA527ED1E4C003A8205 /* DevicesViewModelDelegate.swift */,
+				2D70CCAA27F222A0003A8205 /* DeviceCellProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		2D70CCA727ED1EEF003A8205 /* CommonFile */ = {
+			isa = PBXGroup;
+			children = (
+				2D5C71C127E94345004E1D7E /* DevicesFactory.swift */,
+				2D70CCAC27F22302003A8205 /* DeviceCellFactory.swift */,
+			);
+			path = CommonFile;
 			sourceTree = "<group>";
 		};
 		2DCD81E527BBF84E00BF08AC = {
@@ -134,6 +152,8 @@
 		2DCD81F027BBF84E00BF08AC /* testProject */ = {
 			isa = PBXGroup;
 			children = (
+				2D70CCA727ED1EEF003A8205 /* CommonFile */,
+				2D70CCA227EBB99A003A8205 /* Protocols */,
 				2D3791BD27C27AD2007D4F91 /* Extensions */,
 				2DCD820B27BC022200BF08AC /* Views */,
 				2DCD820D27BC025D00BF08AC /* ViewModels */,
@@ -167,7 +187,10 @@
 		2DCD820B27BC022200BF08AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2D3791C027C281C0007D4F91 /* Controllers */,
+				2DD3D74727C31EF30082957E /* RollerShutterDetailView.swift */,
+				2DD3D74127C305FA0082957E /* HeaterDetailView.swift */,
+				2DCD81F527BBF84F00BF08AC /* DeviceListView.swift */,
+				2D3791B727BECE26007D4F91 /* LightDetailView.swift */,
 				2D3791C927C2A496007D4F91 /* TableViewCells */,
 			);
 			path = Views;
@@ -266,18 +289,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DCD821527BC416C00BF08AC /* Heater.swift in Sources */,
-				2DCD81F627BBF84F00BF08AC /* DeviceListViewController.swift in Sources */,
+				2DCD81F627BBF84F00BF08AC /* DeviceListView.swift in Sources */,
+				2D70CCAD27F22302003A8205 /* DeviceCellFactory.swift in Sources */,
 				2DCD81F227BBF84E00BF08AC /* AppDelegate.swift in Sources */,
 				2DCD820F27BC0FE800BF08AC /* Light.swift in Sources */,
+				2D5C71C227E94345004E1D7E /* DevicesFactory.swift in Sources */,
 				2D3791C627C28E33007D4F91 /* HeaterTableViewCell.swift in Sources */,
 				2D3791C827C28E4B007D4F91 /* RollerShutterTableViewCell.swift in Sources */,
-				2D8B434727C554A70037D8C5 /* UserDefaults.swift in Sources */,
+				2D8B434727C554A70037D8C5 /* UserDefaults+Helpers.swift in Sources */,
 				2D3791C227C2820C007D4F91 /* LightTableViewCell.swift in Sources */,
-				2D3791B827BECE26007D4F91 /* LightDetailViewController.swift in Sources */,
+				2D70CCA427ED1E34003A8205 /* DeviceViewModelProtocol.swift in Sources */,
+				2D3791B827BECE26007D4F91 /* LightDetailView.swift in Sources */,
+				2D70CCA627ED1E4C003A8205 /* DevicesViewModelDelegate.swift in Sources */,
 				2DCD822127BC495400BF08AC /* DevicesViewModel.swift in Sources */,
-				2DD3D74227C305FA0082957E /* HeaterDetailViewController.swift in Sources */,
+				2DD3D74227C305FA0082957E /* HeaterDetailView.swift in Sources */,
+				2D70CCAB27F222A0003A8205 /* DeviceCellProtocol.swift in Sources */,
 				2D3791BC27C2748E007D4F91 /* UserDefaultsManager.swift in Sources */,
-				2DD3D74827C31EF30082957E /* RollerShutterDetailViewController.swift in Sources */,
+				2DD3D74827C31EF30082957E /* RollerShutterDetailView.swift in Sources */,
 				2DCD81F427BBF84F00BF08AC /* SceneDelegate.swift in Sources */,
 				2DCD821727BC422100BF08AC /* RollerShutter.swift in Sources */,
 				2DCDE3D127C51E35001DB295 /* String+Localization.swift in Sources */,

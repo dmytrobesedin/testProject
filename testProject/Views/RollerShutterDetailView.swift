@@ -7,19 +7,17 @@
 
 import UIKit
 
-class RollerShutterDetailViewController: UIViewController {
-    
-    private  var rollerShutterPositionLabel: UILabel = {
-        var label = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+class RollerShutterDetailView: UIViewController {
+    private var rollerShutterPositionLabel: UILabel = {
+        var label = UILabel(frame: .zero)
         label.font = .preferredFont(forTextStyle: .body)
         label.text = "Position:".localized()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    
-    private  var rollerShutterPositionSlider: UISlider = {
-        var slider = UISlider(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
+    private var rollerShutterPositionSlider: UISlider = {
+        var slider = UISlider(frame:.zero)
         slider.minimumValue = 0.0
         slider.maximumValue = 100.0
         slider.translatesAutoresizingMaskIntoConstraints = false
@@ -27,9 +25,7 @@ class RollerShutterDetailViewController: UIViewController {
         return slider
     }()
     
-    
     var rollerShutterViewModel: RollerShutterViewModel
-    
     
     init(rollerShutterViewModel:RollerShutterViewModel) {
         self.rollerShutterViewModel = rollerShutterViewModel
@@ -44,41 +40,35 @@ class RollerShutterDetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        // addSubview
-        self.view.addSubview(rollerShutterPositionLabel)
-        self.view.addSubview(rollerShutterPositionSlider)
-        
+        addShutterDetailSubviews()
         
         // addTarget
-        self.rollerShutterPositionSlider.addTarget(self, action: #selector(changeRollerShutter ), for: .valueChanged)
+        rollerShutterPositionSlider.addTarget(self, action: #selector(changeRollerShutter), for: .valueChanged)
         
-        
-        
-        self.navigationItem.title = rollerShutterViewModel.deviceName
-        rollerShutterPositionSlider.setValue(Float(rollerShutterViewModel.position ?? 0), animated: false)
+        navigationItem.title = rollerShutterViewModel.deviceName
+        rollerShutterPositionSlider.setValue(Float(rollerShutterViewModel.position), animated: false)
         setUpConstraints()
     }
     
+    private func addShutterDetailSubviews() {
+        view.addSubview(rollerShutterPositionLabel)
+        view.addSubview(rollerShutterPositionSlider)
+    }
     
-    private  func setUpConstraints() {
+    private func setUpConstraints() {
         NSLayoutConstraint.activate([
-            rollerShutterPositionLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            rollerShutterPositionLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            rollerShutterPositionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            rollerShutterPositionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             rollerShutterPositionLabel.centerYAnchor.constraint(equalTo: rollerShutterPositionSlider.centerYAnchor, constant: 0), //  const = -150
             
-            rollerShutterPositionSlider.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 160),
-            rollerShutterPositionSlider.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: -150),
+            rollerShutterPositionSlider.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 160),
+            rollerShutterPositionSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -150),
             rollerShutterPositionSlider.leadingAnchor.constraint(equalTo: rollerShutterPositionLabel.trailingAnchor, constant: -150 )
-            
         ])
     }
     
-    
     @objc func changeRollerShutter(sender: UISlider)  {
-        guard sender != nil else {return}
-        
         let key  = "\(rollerShutterViewModel.id)|\(RollerShutter.CodingKeys.position.rawValue)"
-        rollerShutterViewModel.callFuncToSetUpRollerShutterPosition(key: key, value: sender.value)
-        
+        rollerShutterViewModel.setUpRollerShutterPosition(key: key, value: sender.value)
     }
 }

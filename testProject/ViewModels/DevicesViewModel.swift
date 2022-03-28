@@ -5,33 +5,28 @@
 //  Created by Дмитрий Беседин on 15.02.2022.
 //
 
-
+import UIKit
 import Foundation
-
-protocol DevicesViewModelDelegate {
-    func didFinishUpdatingData()
-}
 
 class DevicesViewModel: NSObject {
     private var apiService: APIService?
-    public var userDefaultManager: UserDefaultsManager?
+    private var userDefaultManager: UserDefaultsManager?
     private(set) var deviceData: ModulotestAPIResponse? {
         didSet {
             self.connectDevicesViewModelToController()
         }
     }
     var devicesViewModelDelegate: DevicesViewModelDelegate?
-    
-    public var connectDevicesViewModelToController : (() -> ()) = {}
+    var connectDevicesViewModelToController : (() -> ()) = {}
     
     override init() {
         super.init()
         self.apiService = APIService()
         self.userDefaultManager = UserDefaultsManager()
-        self.callFuncToGetDecodeData()
+        self.getDecodeData()
     }
     
-    private  func callFuncToGetDecodeData()  {
+    private func getDecodeData()  {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             self.apiService?.apiToGetDeviceData { apiResponseData in
@@ -44,7 +39,8 @@ class DevicesViewModel: NSObject {
             }
         }
     }
-    func callFuncToUpdateData() {
+    
+    func updateData() {
         self.deviceData?.devices.forEach({ device in
             device.userDefaultsKeys().forEach { key in
                 self.userDefaultManager?.checkKeyInUserDefaults(key, device)
@@ -52,4 +48,10 @@ class DevicesViewModel: NSObject {
         })
         self.devicesViewModelDelegate?.didFinishUpdatingData()
     }
+    
+    func configureVC(_ device: Device) {
+        guard let newViewModel = DevicesFactory.devicesFactory.create(device) else{return}
+        let vc = newViewModel.configureDeviceVC()
+        self.devicesViewModelDelegate?.didFinishConfiguringVC(vc)
+    }    
 }
