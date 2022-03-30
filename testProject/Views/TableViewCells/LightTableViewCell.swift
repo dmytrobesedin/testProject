@@ -8,6 +8,7 @@
 import UIKit
 
 class LightTableViewCell: UITableViewCell {
+    static let lightIdentifier = "lightCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()

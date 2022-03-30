@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 // MARK: - Device
 class Device: NSObject, Codable {
     let id: Int
@@ -21,8 +19,6 @@ class Device: NSObject, Codable {
         self.productType = productType
     }
     
-    
-    
     private enum CodingKeys: String, CodingKey{
         case id
         case deviceName
@@ -34,11 +30,8 @@ class Device: NSObject, Codable {
         case rollerShutter = "RollerShutter"
     }
     
-    
     func userDefaultsKeys() -> [String] {
         return []
     }
-    
-    
 }
 

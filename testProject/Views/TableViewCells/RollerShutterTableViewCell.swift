@@ -8,6 +8,8 @@
 import UIKit
 
 class RollerShutterTableViewCell: UITableViewCell {
+    static let rollerShutterIdentifier = "rollerShutterCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

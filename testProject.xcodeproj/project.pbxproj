@@ -18,8 +18,6 @@
 		2D5C71C227E94345004E1D7E /* DevicesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5C71C127E94345004E1D7E /* DevicesFactory.swift */; };
 		2D70CCA427ED1E34003A8205 /* DeviceViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D70CCA327ED1E34003A8205 /* DeviceViewModelProtocol.swift */; };
 		2D70CCA627ED1E4C003A8205 /* DevicesViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D70CCA527ED1E4C003A8205 /* DevicesViewModelDelegate.swift */; };
-		2D70CCAB27F222A0003A8205 /* DeviceCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D70CCAA27F222A0003A8205 /* DeviceCellProtocol.swift */; };
-		2D70CCAD27F22302003A8205 /* DeviceCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D70CCAC27F22302003A8205 /* DeviceCellFactory.swift */; };
 		2D8B434727C554A70037D8C5 /* UserDefaults+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B434627C554A70037D8C5 /* UserDefaults+Helpers.swift */; };
 		2DCD81F227BBF84E00BF08AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F127BBF84E00BF08AC /* AppDelegate.swift */; };
 		2DCD81F427BBF84F00BF08AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F327BBF84F00BF08AC /* SceneDelegate.swift */; };
@@ -55,8 +53,6 @@
 		2D5C71C127E94345004E1D7E /* DevicesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesFactory.swift; sourceTree = "<group>"; };
 		2D70CCA327ED1E34003A8205 /* DeviceViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewModelProtocol.swift; sourceTree = "<group>"; };
 		2D70CCA527ED1E4C003A8205 /* DevicesViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewModelDelegate.swift; sourceTree = "<group>"; };
-		2D70CCAA27F222A0003A8205 /* DeviceCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCellProtocol.swift; sourceTree = "<group>"; };
-		2D70CCAC27F22302003A8205 /* DeviceCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCellFactory.swift; sourceTree = "<group>"; };
 		2D8B434627C554A70037D8C5 /* UserDefaults+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Helpers.swift"; sourceTree = "<group>"; };
 		2DCD81EE27BBF84E00BF08AC /* testProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCD81F127BBF84E00BF08AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,7 +115,6 @@
 			children = (
 				2D70CCA327ED1E34003A8205 /* DeviceViewModelProtocol.swift */,
 				2D70CCA527ED1E4C003A8205 /* DevicesViewModelDelegate.swift */,
-				2D70CCAA27F222A0003A8205 /* DeviceCellProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -128,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				2D5C71C127E94345004E1D7E /* DevicesFactory.swift */,
-				2D70CCAC27F22302003A8205 /* DeviceCellFactory.swift */,
 			);
 			path = CommonFile;
 			sourceTree = "<group>";
@@ -290,7 +284,6 @@
 			files = (
 				2DCD821527BC416C00BF08AC /* Heater.swift in Sources */,
 				2DCD81F627BBF84F00BF08AC /* DeviceListView.swift in Sources */,
-				2D70CCAD27F22302003A8205 /* DeviceCellFactory.swift in Sources */,
 				2DCD81F227BBF84E00BF08AC /* AppDelegate.swift in Sources */,
 				2DCD820F27BC0FE800BF08AC /* Light.swift in Sources */,
 				2D5C71C227E94345004E1D7E /* DevicesFactory.swift in Sources */,
@@ -303,7 +296,6 @@
 				2D70CCA627ED1E4C003A8205 /* DevicesViewModelDelegate.swift in Sources */,
 				2DCD822127BC495400BF08AC /* DevicesViewModel.swift in Sources */,
 				2DD3D74227C305FA0082957E /* HeaterDetailView.swift in Sources */,
-				2D70CCAB27F222A0003A8205 /* DeviceCellProtocol.swift in Sources */,
 				2D3791BC27C2748E007D4F91 /* UserDefaultsManager.swift in Sources */,
 				2DD3D74827C31EF30082957E /* RollerShutterDetailView.swift in Sources */,
 				2DCD81F427BBF84F00BF08AC /* SceneDelegate.swift in Sources */,

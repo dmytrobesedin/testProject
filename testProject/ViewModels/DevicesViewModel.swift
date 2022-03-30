@@ -10,12 +10,13 @@ import Foundation
 
 class DevicesViewModel: NSObject {
     private var apiService: APIService?
-    private var userDefaultManager: UserDefaultsManager?
+    private(set) var userDefaultManager: UserDefaultsManager?
     private(set) var deviceData: ModulotestAPIResponse? {
         didSet {
             self.connectDevicesViewModelToController()
         }
     }
+    
     var devicesViewModelDelegate: DevicesViewModelDelegate?
     var connectDevicesViewModelToController : (() -> ()) = {}
     

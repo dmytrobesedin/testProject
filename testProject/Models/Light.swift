@@ -40,5 +40,4 @@ class Light: Device {
         return [String(super.id) + "|" + CodingKeys.intensity.rawValue,
                 String(super.id) + "|" + CodingKeys.mode.rawValue]
     }
-    
 }

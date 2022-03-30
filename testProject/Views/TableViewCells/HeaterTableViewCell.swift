@@ -8,6 +8,7 @@
 import UIKit
 
 class HeaterTableViewCell: UITableViewCell {
+    static let heaterIdentifier = "heaterCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()

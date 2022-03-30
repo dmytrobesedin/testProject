@@ -13,14 +13,10 @@ class Heater: Device {
     var temperature:Int
     var mode: Mode
     
-    
-    
     public  enum CodingKeys: String, CodingKey {
         case temperature
         case mode
-        
     }
-    
     
     enum Mode: String,Codable {
         case on = "ON"
@@ -38,5 +34,4 @@ class Heater: Device {
         return [String(super.id) + "|" + CodingKeys.temperature.rawValue,
                 String(super.id) + "|" + CodingKeys.mode.rawValue]
     }
-    
 }
