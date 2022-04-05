@@ -18,7 +18,15 @@ class HeaterTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    public func configureHeaterCell(heaterViewModel: HeaterViewModel) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func configureCell(heaterViewModel: HeaterViewModel) {
         self.textLabel?.text = heaterViewModel.deviceName.localized()
         if heaterViewModel.mode == .on {
             self.detailTextLabel?.text = "mode - \(heaterViewModel.mode.rawValue) at ".localized() + "\(heaterViewModel.temperature)°C"

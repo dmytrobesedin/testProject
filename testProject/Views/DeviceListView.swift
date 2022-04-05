@@ -74,26 +74,23 @@ func configureCell(_ device: Device,_ indexPath: IndexPath, _ tableView: UITable
     switch device.productType {
     case .light:
         guard let lightDevice = device as? Light else {return nil}
-        guard var lightCell = tableView.dequeueReusableCell(withIdentifier: LightTableViewCell.lightIdentifier, for: indexPath) as? LightTableViewCell else{return nil}
-        lightCell = LightTableViewCell(style: .subtitle, reuseIdentifier: LightTableViewCell.lightIdentifier)
+        guard let lightCell = tableView.dequeueReusableCell(withIdentifier: LightTableViewCell.lightIdentifier, for: indexPath) as? LightTableViewCell else{return nil}
         let lightViewModel = LightViewModel(device: lightDevice)
-        lightCell.configureLightCell(lightViewModel: lightViewModel)
+        lightCell.configureCell(lightViewModel: lightViewModel)
         return lightCell
         
     case .heater:
         guard let heaterDevice = device as? Heater else {return nil}
-        guard var heaterCell = tableView.dequeueReusableCell(withIdentifier: HeaterTableViewCell.heaterIdentifier, for: indexPath) as? HeaterTableViewCell else{return nil}
-        heaterCell = HeaterTableViewCell(style: .subtitle, reuseIdentifier: HeaterTableViewCell.heaterIdentifier)
+        guard let heaterCell = tableView.dequeueReusableCell(withIdentifier: HeaterTableViewCell.heaterIdentifier, for: indexPath) as? HeaterTableViewCell else{return nil}
         let heaterViewModel = HeaterViewModel(device: heaterDevice)
-        heaterCell.configureHeaterCell(heaterViewModel: heaterViewModel)
+        heaterCell.configureCell(heaterViewModel: heaterViewModel)
         return heaterCell
         
     case .rollerShutter:
         guard let rollerShutterDevice = device as? RollerShutter else {return nil}
-        guard var rollerShutterCell = tableView.dequeueReusableCell(withIdentifier: RollerShutterTableViewCell.rollerShutterIdentifier, for: indexPath) as? RollerShutterTableViewCell else{return nil}
-        rollerShutterCell = RollerShutterTableViewCell(style: .subtitle, reuseIdentifier: RollerShutterTableViewCell.rollerShutterIdentifier)
+        guard let rollerShutterCell = tableView.dequeueReusableCell(withIdentifier: RollerShutterTableViewCell.rollerShutterIdentifier, for: indexPath) as? RollerShutterTableViewCell else{return nil}
         let rollerShutterViewModel = RollerShutterViewModel(device: rollerShutterDevice)
-        rollerShutterCell.configureRollerShutterCell(rollerShutterViewModel:rollerShutterViewModel)
+        rollerShutterCell.configureCell(rollerShutterViewModel:rollerShutterViewModel)
         return rollerShutterCell
     }
 }

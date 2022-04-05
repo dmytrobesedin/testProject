@@ -12,14 +12,21 @@ class RollerShutterTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    public func configureRollerShutterCell(rollerShutterViewModel: RollerShutterViewModel) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func configureCell(rollerShutterViewModel: RollerShutterViewModel) {
         self.textLabel?.text = rollerShutterViewModel.deviceName.localized()
         if rollerShutterViewModel.position == 0 {
             self.detailTextLabel?.text = "mode - closed".localized()
