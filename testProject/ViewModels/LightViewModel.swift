@@ -35,12 +35,13 @@ class LightViewModel {
         return lightDataModel.id
     }
     
-    public func setUpLightIntensity(key: String, value: Float) {
+    public func setUpLightIntensity(value: Float) {
+        let key = "\(self.id)|\(Light.CodingKeys.intensity.rawValue)"
         userDefaultsManager.setUpSliderValue(key, value)
-        
     }
     
-    public func setUpLightMode(key: String, value: Bool) {
+    public func setUpLightMode(value: Bool) {
+        let key  = "\(self.id)|\(Light.CodingKeys.mode.rawValue)"
         userDefaultsManager.setUpSwitchValue(key, value)
     }
 }

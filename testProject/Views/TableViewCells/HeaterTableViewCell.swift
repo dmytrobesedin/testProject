@@ -29,7 +29,7 @@ class HeaterTableViewCell: UITableViewCell {
     public func configureCell(heaterViewModel: HeaterViewModel) {
         self.textLabel?.text = heaterViewModel.deviceName.localized()
         if heaterViewModel.mode == .on {
-            self.detailTextLabel?.text = "mode - \(heaterViewModel.mode.rawValue) at ".localized() + "\(heaterViewModel.temperature)°C"
+            self.detailTextLabel?.text = "mode - \(heaterViewModel.mode.rawValue) at".localized() + " " + "\(heaterViewModel.temperature)°C"
             self.imageView?.image = UIImage(named: "DeviceHeaterOnIcon")
         }
         else {

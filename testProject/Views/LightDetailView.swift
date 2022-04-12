@@ -11,7 +11,7 @@ class LightDetailView: UIViewController {
     private var intensityLabel: UILabel = {
         var label = UILabel(frame:.zero)
         label.font = .preferredFont(forTextStyle: .body)
-        label.text = "Intensity:".localized()
+        label.text = Light.CodingKeys.intensity.rawValue.localized() // не кто так не делает 
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -27,7 +27,7 @@ class LightDetailView: UIViewController {
     private var modeLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.font = .preferredFont(forTextStyle: .body)
-        label.text = "Mode:".localized()
+        label.text = Light.CodingKeys.mode.rawValue.localized()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -104,8 +104,7 @@ class LightDetailView: UIViewController {
     }
     
     @objc private func changeSlider(sender: UISlider){
-        let key  = "\(lightViewModel.id)|\(Light.CodingKeys.intensity.rawValue)"
-        lightViewModel.setUpLightIntensity(key: key, value: sender.value)
+        lightViewModel.setUpLightIntensity(value: sender.value) // нюанс
     }
     
     @objc private func changeSwitch(sender: UISwitch){
@@ -116,8 +115,7 @@ class LightDetailView: UIViewController {
         else{
             lightValue = false
         }
-        let key  = "\(lightViewModel.id)|\(Light.CodingKeys.mode.rawValue)"
-        lightViewModel.setUpLightMode(key: key, value: lightValue)
+        lightViewModel.setUpLightMode(value: lightValue)
     }
 }
 

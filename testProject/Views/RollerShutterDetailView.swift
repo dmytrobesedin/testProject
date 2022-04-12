@@ -11,7 +11,7 @@ class RollerShutterDetailView: UIViewController {
     private var rollerShutterPositionLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.font = .preferredFont(forTextStyle: .body)
-        label.text = "Position:".localized()
+        label.text = RollerShutter.CodingKeys.position.rawValue.localized()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -68,7 +68,6 @@ class RollerShutterDetailView: UIViewController {
     }
     
     @objc func changeRollerShutter(sender: UISlider)  {
-        let key  = "\(rollerShutterViewModel.id)|\(RollerShutter.CodingKeys.position.rawValue)"
-        rollerShutterViewModel.setUpRollerShutterPosition(key: key, value: sender.value)
+        rollerShutterViewModel.setUpRollerShutterPosition(value: sender.value)
     }
 }

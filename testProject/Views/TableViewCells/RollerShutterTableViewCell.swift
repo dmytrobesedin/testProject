@@ -9,6 +9,9 @@ import UIKit
 
 class RollerShutterTableViewCell: UITableViewCell {
     static let rollerShutterIdentifier = "rollerShutterCell"
+    private let modeClosed =  "mode - closed"
+    private let modeFullyOpened = "mode - fully opened,"
+    private let openedAt = "opened at"
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,15 +32,15 @@ class RollerShutterTableViewCell: UITableViewCell {
     public func configureCell(rollerShutterViewModel: RollerShutterViewModel) {
         self.textLabel?.text = rollerShutterViewModel.deviceName.localized()
         if rollerShutterViewModel.position == 0 {
-            self.detailTextLabel?.text = "mode - closed".localized()
+            self.detailTextLabel?.text = modeClosed.localized()
             self.imageView?.image = UIImage(named: "DeviceRollerShutterIcon")
         }
         else if rollerShutterViewModel.position == 100 {
-            self.detailTextLabel?.text = "mode - fully opened,".localized() + " opened at ".localized() + "\(rollerShutterViewModel.position)%"
+            self.detailTextLabel?.text = modeFullyOpened.localized() + " " + openedAt.localized() + " " + "\(rollerShutterViewModel.position)%"
             self.imageView?.image = UIImage(named: "DeviceRollerShutterIcon")
         }
         else{
-            self.detailTextLabel?.text = "opened at ".localized() + "\(rollerShutterViewModel.position)%"
+            self.detailTextLabel?.text = openedAt.localized() + " " + "\(rollerShutterViewModel.position)%"
             self.imageView?.image = UIImage(named: "DeviceRollerShutterIcon")
         }
     }

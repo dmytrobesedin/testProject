@@ -29,7 +29,7 @@ class LightTableViewCell: UITableViewCell {
     public func configureCell(lightViewModel: LightViewModel) {
         self.textLabel?.text = "\(lightViewModel.deviceName)".localized()
         if lightViewModel.mode == .on{
-            self.detailTextLabel?.text = "mode - \(lightViewModel.mode.rawValue) at ".localized() + "\(lightViewModel.intensity)%"
+            self.detailTextLabel?.text = "mode - \(lightViewModel.mode.rawValue) at".localized() + " " + "\(lightViewModel.intensity)%"
             self.imageView?.image = UIImage(named: "DeviceLightOnIcon")
         }
         else{

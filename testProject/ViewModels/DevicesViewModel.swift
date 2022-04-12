@@ -24,6 +24,14 @@ class DevicesViewModel: NSObject {
         super.init()
         self.apiService = APIService()
         self.userDefaultManager = UserDefaultsManager()
+        
+//        deviceData?.deviceDidChangeAction = {[weak self] in
+//            guard let self = self  else {return}
+//            self.getDecodeData()
+//        }
+//
+        deviceData?.delegate = self
+        
         self.getDecodeData()
     }
     
@@ -31,17 +39,17 @@ class DevicesViewModel: NSObject {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             self.apiService?.apiToGetDeviceData { apiResponseData in
-                apiResponseData.devices.forEach { device in
-                    device.userDefaultsKeys().forEach { key in
-                        self.userDefaultManager?.checkKeyInUserDefaults(key, device)
-                    }
-                }
+//                apiResponseData.devices.forEach { device in
+//                    device.userDefaultsKeys().forEach { key in
+//                        self.userDefaultManager?.checkKeyInUserDefaults(key, device)
+//                    }
+//                }
                 self.deviceData = apiResponseData
             }
         }
     }
     
-    func updateData() {
+    func updateDataInUserDefaults() {
         self.deviceData?.devices.forEach({ device in
             device.userDefaultsKeys().forEach { key in
                 self.userDefaultManager?.checkKeyInUserDefaults(key, device)
@@ -55,4 +63,11 @@ class DevicesViewModel: NSObject {
         let vc = newViewModel.configureDeviceVC()
         self.devicesViewModelDelegate?.didFinishConfiguringVC(vc)
     }    
+}
+
+extension DevicesViewModel:ModulotestAPIResponseDelegate{
+    func deviceDidChangeAction() {
+        
+            getDecodeData()
+    }
 }

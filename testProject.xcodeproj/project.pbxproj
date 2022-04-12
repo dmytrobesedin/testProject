@@ -119,12 +119,12 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		2D70CCA727ED1EEF003A8205 /* CommonFile */ = {
+		2D70CCA727ED1EEF003A8205 /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
 				2D5C71C127E94345004E1D7E /* DevicesFactory.swift */,
 			);
-			path = CommonFile;
+			path = CommonFiles;
 			sourceTree = "<group>";
 		};
 		2DCD81E527BBF84E00BF08AC = {
@@ -146,7 +146,7 @@
 		2DCD81F027BBF84E00BF08AC /* testProject */ = {
 			isa = PBXGroup;
 			children = (
-				2D70CCA727ED1EEF003A8205 /* CommonFile */,
+				2D70CCA727ED1EEF003A8205 /* CommonFiles */,
 				2D70CCA227EBB99A003A8205 /* Protocols */,
 				2D3791BD27C27AD2007D4F91 /* Extensions */,
 				2DCD820B27BC022200BF08AC /* Views */,

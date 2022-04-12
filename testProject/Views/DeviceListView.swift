@@ -10,9 +10,9 @@ import UIKit
 class DeviceListView: UIViewController {
     private var devicesListTableView: UITableView = {
         let tableview = UITableView(frame: UIScreen.main.bounds, style: .plain)
-        tableview.register(LightTableViewCell.self, forCellReuseIdentifier: "lightCell")
-        tableview.register(HeaterTableViewCell.self, forCellReuseIdentifier: "heaterCell")
-        tableview.register(RollerShutterTableViewCell.self, forCellReuseIdentifier: "rollerShutterCell")
+        tableview.register(LightTableViewCell.self, forCellReuseIdentifier: LightTableViewCell.lightIdentifier)
+        tableview.register(HeaterTableViewCell.self, forCellReuseIdentifier: HeaterTableViewCell.heaterIdentifier)
+        tableview.register(RollerShutterTableViewCell.self, forCellReuseIdentifier: RollerShutterTableViewCell.rollerShutterIdentifier)
         return tableview
     }()
     
@@ -42,7 +42,7 @@ class DeviceListView: UIViewController {
         loadDataFromViewModel()
         
         // delete items from UserDefaults
-        //devicesViewModel.userDefaultManager?.cleanUserDefaults()
+        devicesViewModel.userDefaultManager?.cleanUserDefaults()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +56,7 @@ class DeviceListView: UIViewController {
     
     private func updateSelectedRow(_ isSelected: Bool)  {
         if isSelected {
-            devicesViewModel.updateData()
+            devicesViewModel.updateDataInUserDefaults()
         }
     }
     

@@ -5,3 +5,14 @@
   Created by Дмитрий Беседин on 22.02.2022.
   
 */
+
+"intensity" = "intensity";
+"mode" = "mode";
+"temperature" = "temperature";
+"position" = "position";
+"mode - closed" = "mode - closed";
+"mode - fully opened," = "mode - fully opened,";
+"opened at" = "opened at";
+"mode - ON at" = "mode - ON at";
+"mode - OFF" = "mode - OFF";
+

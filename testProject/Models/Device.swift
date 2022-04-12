@@ -9,15 +9,11 @@ import Foundation
 
 // MARK: - Device
 class Device: NSObject, Codable {
-    let id: Int
+    var id: Int
     let deviceName: String
     let productType: ProductType
     
-    init(id:Int, deviceName:String, productType:ProductType) {
-        self.id = id
-        self.deviceName = deviceName
-        self.productType = productType
-    }
+   
     
     private enum CodingKeys: String, CodingKey{
         case id

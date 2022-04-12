@@ -11,7 +11,7 @@ class HeaterDetailView: UIViewController {
     private var heaterTemperatureLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.font = .preferredFont(forTextStyle: .body)
-        label.text = "Temperature:".localized()
+        label.text = Heater.CodingKeys.temperature.rawValue.localized()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -27,7 +27,7 @@ class HeaterDetailView: UIViewController {
     private var heaterModeLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.font = .preferredFont(forTextStyle: .body)
-        label.text = "Mode:".localized()
+        label.text = Heater.CodingKeys.mode.rawValue.localized()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -108,9 +108,7 @@ class HeaterDetailView: UIViewController {
         let step: Float = 5
         let roundedValue = round(sender.value / step) * step
         sender.value = roundedValue
-        
-        let key  = "\(heaterViewModel.id)|\(Heater.CodingKeys.temperature.rawValue)"
-        heaterViewModel.setUpHeaterTemperature(key: key, value: sender.value)
+        heaterViewModel.setUpHeaterTemperature(value: sender.value)
     }
     
     @objc func switchValueChanged(sender: UISwitch){
@@ -121,9 +119,7 @@ class HeaterDetailView: UIViewController {
         else{
             heaterValue = false
         }
-        
-        let key  = "\(heaterViewModel.id)|\(Heater.CodingKeys.mode.rawValue)"
-        heaterViewModel.setUpHeaterMode(key: key, value: heaterValue)
+        heaterViewModel.setUpHeaterMode(value: heaterValue)
     }
 }
 

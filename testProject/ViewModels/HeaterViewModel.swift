@@ -34,14 +34,13 @@ class HeaterViewModel {
         return heaterDataModel.productType.rawValue
     }
     
-    public func setUpHeaterTemperature(key: String, value: Float) {
+    public func setUpHeaterTemperature(value: Float) {
+        let key = "\(self.id)|\(Heater.CodingKeys.temperature.rawValue)"
         userDefaultsManager.setUpSliderValue(key, value)
     }
-    public func setUpHeaterMode(key: String, value: Bool) {
+    public func setUpHeaterMode(value: Bool) {
+        let key = "\(self.id)|\(Heater.CodingKeys.mode.rawValue)"
         userDefaultsManager.setUpSwitchValue(key, value)
-    }
-    func configureHeaterVC() -> HeaterDetailView {
-        return HeaterDetailView(heaterViewModel: self)
     }
 }
 

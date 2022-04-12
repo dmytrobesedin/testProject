@@ -9,19 +9,16 @@ import Foundation
 
 // MARK: - Light
 class Light: Device {
+    
     var intensity: Int
     var mode: LightMode
     
-    public  enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case intensity
         case mode
     }
     
-    init(id: Int, deviceName: String, productType: ProductType, intensity:Int, mode:LightMode) {
-        self.intensity = intensity
-        self.mode = mode
-        super.init(id: id, deviceName: deviceName, productType: productType)
-    }
+
     
     required init(from decoder: Decoder) throws {
         let container  = try decoder.container(keyedBy: CodingKeys.self)

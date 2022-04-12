@@ -14,7 +14,6 @@ class UserDefaultsManager: UserDefaults {
         if arrayKey[1] == Heater.CodingKeys.temperature.rawValue {
             guard let newValueTemp = defaults.object(forKey: key) as? Int else{return}
             heaterDevice.temperature = newValueTemp
-            
         }
         else if arrayKey[1] == Heater.CodingKeys.mode.rawValue {
             guard let newValueMode = defaults.object(forKey: key) as? Bool else{return}
@@ -31,7 +30,6 @@ class UserDefaultsManager: UserDefaults {
         if arrayKey[1] == Light.CodingKeys.intensity.rawValue {
             guard let newValueInten = defaults.object(forKey: key) as? Int else{return}
             lightDevice.intensity = newValueInten
-            
         }
         else if arrayKey[1] == Light.CodingKeys.mode.rawValue {
             guard let newValueMode = defaults.object(forKey: key) as? Bool else{return}
@@ -51,7 +49,7 @@ class UserDefaultsManager: UserDefaults {
         }
     }
     
-    public func checkKeyInUserDefaults(_ key: String, _ device: Device ) {
+    public func checkKeyInUserDefaults(_ key: String, _ device: Device) {
         if UserDefaults.standard.isKeyPresentInUserDefaults(key: key) {
             let arrayKey = key.components(separatedBy: "|")
             if device.productType == .heater {

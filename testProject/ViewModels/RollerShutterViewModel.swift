@@ -30,7 +30,8 @@ class RollerShutterViewModel {
         return rollerShutterDataModel.productType.rawValue
     }
     
-    public func setUpRollerShutterPosition(key: String, value: Float) {
+    public func setUpRollerShutterPosition(value: Float) {
+        let key = "\(self.id)|\(RollerShutter.CodingKeys.position.rawValue)"
         userDefaultsManager.setUpSliderValue(key, value)
     }
 }
