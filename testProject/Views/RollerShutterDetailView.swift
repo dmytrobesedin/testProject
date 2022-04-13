@@ -61,7 +61,7 @@ class RollerShutterDetailView: UIViewController {
             rollerShutterPositionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             rollerShutterPositionLabel.centerYAnchor.constraint(equalTo: rollerShutterPositionSlider.centerYAnchor, constant: 0), //  const = -150
             
-            rollerShutterPositionSlider.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 160),
+            rollerShutterPositionSlider.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 165),
             rollerShutterPositionSlider.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -150),
             rollerShutterPositionSlider.leadingAnchor.constraint(equalTo: rollerShutterPositionLabel.trailingAnchor, constant: -150 )
         ])

@@ -68,42 +68,35 @@ class DeviceListView: UIViewController {
             }
         }
     }
-}
-
-func configureCell(_ device: Device,_ indexPath: IndexPath, _ tableView: UITableView) -> UITableViewCell? {
-    switch device.productType {
-    case .light:
-        guard let lightDevice = device as? Light else {return nil}
-        guard let lightCell = tableView.dequeueReusableCell(withIdentifier: LightTableViewCell.lightIdentifier, for: indexPath) as? LightTableViewCell else{return nil}
-        let lightViewModel = LightViewModel(device: lightDevice)
-        lightCell.configureCell(lightViewModel: lightViewModel)
-        return lightCell
-        
-    case .heater:
-        guard let heaterDevice = device as? Heater else {return nil}
-        guard let heaterCell = tableView.dequeueReusableCell(withIdentifier: HeaterTableViewCell.heaterIdentifier, for: indexPath) as? HeaterTableViewCell else{return nil}
-        let heaterViewModel = HeaterViewModel(device: heaterDevice)
-        heaterCell.configureCell(heaterViewModel: heaterViewModel)
-        return heaterCell
-        
-    case .rollerShutter:
-        guard let rollerShutterDevice = device as? RollerShutter else {return nil}
-        guard let rollerShutterCell = tableView.dequeueReusableCell(withIdentifier: RollerShutterTableViewCell.rollerShutterIdentifier, for: indexPath) as? RollerShutterTableViewCell else{return nil}
-        let rollerShutterViewModel = RollerShutterViewModel(device: rollerShutterDevice)
-        rollerShutterCell.configureCell(rollerShutterViewModel:rollerShutterViewModel)
-        return rollerShutterCell
+    
+    private func configureCell(_ device: Device,_ indexPath: IndexPath, _ tableView: UITableView) -> UITableViewCell? {
+        switch device.productType {
+        case .light:
+            guard let lightDevice = device as? Light else {return nil}
+            guard let lightCell = tableView.dequeueReusableCell(withIdentifier: LightTableViewCell.lightIdentifier, for: indexPath) as? LightTableViewCell else{return nil}
+            let lightViewModel = LightViewModel(device: lightDevice)
+            lightCell.configureCell(lightViewModel: lightViewModel)
+            return lightCell
+            
+        case .heater:
+            guard let heaterDevice = device as? Heater else {return nil}
+            guard let heaterCell = tableView.dequeueReusableCell(withIdentifier: HeaterTableViewCell.heaterIdentifier, for: indexPath) as? HeaterTableViewCell else{return nil}
+            let heaterViewModel = HeaterViewModel(device: heaterDevice)
+            heaterCell.configureCell(heaterViewModel: heaterViewModel)
+            return heaterCell
+            
+        case .rollerShutter:
+            guard let rollerShutterDevice = device as? RollerShutter else {return nil}
+            guard let rollerShutterCell = tableView.dequeueReusableCell(withIdentifier: RollerShutterTableViewCell.rollerShutterIdentifier, for: indexPath) as? RollerShutterTableViewCell else{return nil}
+            let rollerShutterViewModel = RollerShutterViewModel(device: rollerShutterDevice)
+            rollerShutterCell.configureCell(rollerShutterViewModel:rollerShutterViewModel)
+            return rollerShutterCell
+        }
     }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
-extension DeviceListView: UITableViewDelegate, UITableViewDataSource, DevicesViewModelDelegate{
-    func didFinishUpdatingData() {
-        DispatchQueue.main.async {
-            self.devicesListTableView.reloadRows(at: [self.selectedIndexPath], with: .none)
-        }
-        isSelectedRow = false
-    }
-    
+extension DeviceListView: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return devicesViewModel.deviceData?.devices.count  ?? 0
     }
@@ -120,9 +113,19 @@ extension DeviceListView: UITableViewDelegate, UITableViewDataSource, DevicesVie
         guard let device = devicesViewModel.deviceData?.devices[indexPath.row] else{return}
         devicesViewModel.configureVC(device)
     }
-    
+}
+
+// MARK: - DevicesViewModelDelegate
+extension DeviceListView: DevicesViewModelDelegate {
     func didFinishConfiguringVC(_ vc: UIViewController) {
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func didFinishUpdatingData() {
+        DispatchQueue.main.async {
+            self.devicesListTableView.reloadRows(at: [self.selectedIndexPath], with: .none)
+        }
+        isSelectedRow = false
     }
 }
 

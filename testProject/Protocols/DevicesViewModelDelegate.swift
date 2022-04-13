@@ -7,7 +7,7 @@
 import UIKit
 import Foundation
 
-protocol DevicesViewModelDelegate {
+protocol DevicesViewModelDelegate: AnyObject {
     func didFinishUpdatingData()
     func didFinishConfiguringVC(_ vc: UIViewController)
 }

@@ -10,9 +10,9 @@
 "mode" = "mode";
 "temperature" = "temperature";
 "position" = "position";
-"mode - closed" = "mode - closed";
-"mode - fully opened," = "mode - fully opened,";
+"closed" = "closed";
+"fully opened," = "fully opened,";
 "opened at" = "opened at";
-"mode - ON at" = "mode - ON at";
-"mode - OFF" = "mode - OFF";
+"ON at" = "ON at";
+
 

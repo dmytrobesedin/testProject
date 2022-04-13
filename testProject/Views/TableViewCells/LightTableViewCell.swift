@@ -28,12 +28,12 @@ class LightTableViewCell: UITableViewCell {
     
     public func configureCell(lightViewModel: LightViewModel) {
         self.textLabel?.text = "\(lightViewModel.deviceName)".localized()
-        if lightViewModel.mode == .on{
-            self.detailTextLabel?.text = "mode - \(lightViewModel.mode.rawValue) at".localized() + " " + "\(lightViewModel.intensity)%"
+        if lightViewModel.mode == .on {
+            self.detailTextLabel?.text = "\(lightViewModel.mode.rawValue) at".localized() + " " + "\(lightViewModel.intensity)%"
             self.imageView?.image = UIImage(named: "DeviceLightOnIcon")
         }
-        else{
-            self.detailTextLabel?.text = "mode - \(lightViewModel.mode.rawValue)".localized()
+        else {
+            self.detailTextLabel?.text = "\(lightViewModel.mode.rawValue)".localized()
             self.imageView?.image = UIImage(named: "DeviceLightOffIcon")
         }
     }

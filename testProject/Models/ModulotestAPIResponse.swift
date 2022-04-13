@@ -6,26 +6,19 @@
 //
 
 import Foundation
-protocol ModulotestAPIResponseDelegate{
-    func deviceDidChangeAction()
-}
 // MARK: - ModulotestAPIResponse
 class ModulotestAPIResponse: Decodable {
     var devices: [Device] {
         didSet{
-//            if let closure = deviceDidChangeAction{
-//                closure()
-//            }
-            delegate?.deviceDidChangeAction()
+            if let closure = devicesDidChangeAction{
+                closure()
+            }
         }
     }
-
-    var deviceDidChangeAction:(()->())?
-    var delegate: ModulotestAPIResponseDelegate?
-    // var user: User
+    var devicesDidChangeAction:(()->())?
+    
     enum ModulotestAPIResponseKey:CodingKey {
         case devices
-        // case user
     }
     
     enum DeviceTypeKey: String, CodingKey  {
@@ -38,7 +31,7 @@ class ModulotestAPIResponse: Decodable {
         case rollerShutter = "RollerShutter"
     }
     
-   required init(from decoder:Decoder) throws {
+    required init(from decoder:Decoder) throws {
         let container = try decoder.container(keyedBy: ModulotestAPIResponseKey.self)
         var devicesArrayForType = try container.nestedUnkeyedContainer(forKey: ModulotestAPIResponseKey.devices)
         var devices = [Device]()
@@ -56,8 +49,6 @@ class ModulotestAPIResponse: Decodable {
                 devices.append(try devicesArray.decode(RollerShutter.self))
             }
         }
-    
         self.devices = devices
     }
- 
 }

@@ -11,7 +11,7 @@ class LightDetailView: UIViewController {
     private var intensityLabel: UILabel = {
         var label = UILabel(frame:.zero)
         label.font = .preferredFont(forTextStyle: .body)
-        label.text = Light.CodingKeys.intensity.rawValue.localized() // не кто так не делает 
+        label.text = Light.CodingKeys.intensity.rawValue.localized() 
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -83,9 +83,9 @@ class LightDetailView: UIViewController {
     
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
-            intensityLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
+            intensityLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12),
             intensityLabel.firstBaselineAnchor.constraint(equalTo: intensitySlider.lastBaselineAnchor),
-            intensityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor ),
+            intensityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             intensityLabel.centerYAnchor.constraint(equalTo: intensitySlider.centerYAnchor),
             
             intensitySlider.trailingAnchor.constraint(equalTo: view.trailingAnchor ),
@@ -104,7 +104,7 @@ class LightDetailView: UIViewController {
     }
     
     @objc private func changeSlider(sender: UISlider){
-        lightViewModel.setUpLightIntensity(value: sender.value) // нюанс
+        lightViewModel.setUpLightIntensity(value: sender.value)
     }
     
     @objc private func changeSwitch(sender: UISwitch){

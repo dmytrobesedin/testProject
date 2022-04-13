@@ -9,7 +9,6 @@ import Foundation
 
 // MARK: - Light
 class Light: Device {
-    
     var intensity: Int
     var mode: LightMode
     
@@ -18,15 +17,12 @@ class Light: Device {
         case mode
     }
     
-
-    
     required init(from decoder: Decoder) throws {
         let container  = try decoder.container(keyedBy: CodingKeys.self)
         self.intensity = try container.decode(Int.self, forKey: .intensity)
         self.mode = try  container.decode(LightMode.self, forKey: .mode)
         try super.init(from: decoder)
     }
-    
     
     enum LightMode: String,Codable {
         case on = "ON"
