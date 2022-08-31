@@ -7,9 +7,11 @@
 import UIKit
 import Foundation
 
-class UserDefaultsManager: UserDefaults {
+final class UserDefaultsManager: UserDefaults {
+	// MARK: - Constants
     public let defaults = UserDefaults.standard
-    
+
+	// MARK: - Methods
     public func setHeaterDeviceUserDefaults( key:String, arrayKey: [String], heaterDevice:Heater) {
         if arrayKey[1] == Heater.CodingKeys.temperature.rawValue {
             guard let newValueTemp = defaults.object(forKey: key) as? Int else{return}

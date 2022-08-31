@@ -8,23 +8,26 @@
 import UIKit
 
 class LightDetailView: UIViewController {
-    private var intensityLabel: UILabel = {
-        var label = UILabel(frame:.zero)
+	// MARK: - UI
+    private lazy var intensityLabel: UILabel = {
+        var label = UILabel(frame: .zero)
         label.font = .preferredFont(forTextStyle: .body)
         label.text = Light.CodingKeys.intensity.rawValue.localized() 
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var intensitySlider: UISlider = {
+    private lazy var intensitySlider: UISlider = {
         var intensitySlider = UISlider(frame: .zero)
         intensitySlider.minimumValue = 0.0
         intensitySlider.maximumValue = 100.0
+		intensitySlider.addTarget(self, action: #selector(changeSlider), for: .valueChanged)
+		intensitySlider.setValue(Float(lightViewModel.intensity), animated: false)
         intensitySlider.translatesAutoresizingMaskIntoConstraints = false
         return intensitySlider
     }()
     
-    private var modeLabel: UILabel = {
+    private lazy var modeLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.font = .preferredFont(forTextStyle: .body)
         label.text = Light.CodingKeys.mode.rawValue.localized()
@@ -32,14 +35,17 @@ class LightDetailView: UIViewController {
         return label
     }()
     
-    private var modeSwitch: UISwitch = {
+    private lazy var modeSwitch: UISwitch = {
         var modeSwitch = UISwitch(frame: .zero)
+		modeSwitch.addTarget(self, action: #selector(changeSwitch), for: .valueChanged)
         modeSwitch.translatesAutoresizingMaskIntoConstraints = false
         return modeSwitch
     }()
-    
+
+	// MARK: - Properties
     var lightViewModel: LightViewModel
-    
+
+	// MARK: - Init
     init(lightViewModel: LightViewModel) {
         self.lightViewModel = lightViewModel
         super.init(nibName: nil, bundle: nil)
@@ -48,74 +54,87 @@ class LightDetailView: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+	// MARK: - Memory Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        
-        // addTarget
-        intensitySlider.addTarget(self, action: #selector(changeSlider), for: .valueChanged)
-        modeSwitch.addTarget(self, action: #selector(changeSwitch), for: .valueChanged)
-        
-        addDetailLightSubviews()
-        
-        // setUp
-        setUpValue()
-        setUpConstraints()
-    }
-    
-    private func addDetailLightSubviews() {
-        view.addSubview(intensityLabel)
-        view.addSubview(intensitySlider)
-        view.addSubview(modeLabel)
-        view.addSubview(modeSwitch)
-    }
-    
-    private func setUpValue() {
-        navigationItem.title  = lightViewModel.deviceName
-        intensitySlider.setValue(Float(lightViewModel.intensity), animated: false)
-        if lightViewModel.mode == .on {
-            modeSwitch.setOn(true, animated: false)
-        } else {
-            modeSwitch.setOn(false, animated: false)
-        }
-    }
-    
-    private func setUpConstraints() {
-        NSLayoutConstraint.activate([
-            intensityLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12),
-            intensityLabel.firstBaselineAnchor.constraint(equalTo: intensitySlider.lastBaselineAnchor),
-            intensityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            intensityLabel.centerYAnchor.constraint(equalTo: intensitySlider.centerYAnchor),
-            
-            intensitySlider.trailingAnchor.constraint(equalTo: view.trailingAnchor ),
-            intensitySlider.leadingAnchor.constraint(equalTo: intensityLabel.trailingAnchor, constant: 8),
-            intensitySlider.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
-            
-            modeLabel.topAnchor.constraint(equalTo: intensityLabel.bottomAnchor, constant: 30),
-            modeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor ),
-            modeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            modeLabel.firstBaselineAnchor.constraint(equalTo: modeSwitch.lastBaselineAnchor),
-            
-            modeSwitch.topAnchor.constraint(equalTo: intensitySlider.bottomAnchor, constant: 30),
-            modeSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
-            modeSwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        ])
-    }
-    
-    @objc private func changeSlider(sender: UISlider){
-        lightViewModel.setUpLightIntensity(value: sender.value)
-    }
-    
-    @objc private func changeSwitch(sender: UISwitch){
-        let lightValue: Bool
-        if sender.isOn {
-            lightValue = true
-        }
-        else{
-            lightValue = false
-        }
-        lightViewModel.setUpLightMode(value: lightValue)
+
+		setupValue()
+        setup()
     }
 }
+
+// MARK: - Setup Methods
+private extension LightDetailView {
+	 func setup() {
+		setupInterface()
+		setupConstraints()
+	}
+
+	 func setupInterface() {
+		view.backgroundColor = .white
+		navigationItem.title  = lightViewModel.deviceName
+		view.addSubview(intensityLabel)
+		view.addSubview(intensitySlider)
+		view.addSubview(modeLabel)
+		view.addSubview(modeSwitch)
+	}
+
+	 func setupValue() {
+		 switch lightViewModel.mode {
+		 case .on:
+			 modeSwitch.setOn(true, animated: false)
+		 case .off:
+			 modeSwitch.setOn(false, animated: false)
+		 }
+	}
+
+	 func setupConstraints() {
+		NSLayoutConstraint.activate([
+			//IntensityLabel
+			intensityLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12),
+			intensityLabel.firstBaselineAnchor.constraint(equalTo: intensitySlider.lastBaselineAnchor),
+			intensityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			intensityLabel.centerYAnchor.constraint(equalTo: intensitySlider.centerYAnchor),
+
+			// IntensityLabel
+			intensitySlider.trailingAnchor.constraint(equalTo: view.trailingAnchor ),
+			intensitySlider.leadingAnchor.constraint(equalTo: intensityLabel.trailingAnchor, constant: 8),
+			intensitySlider.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
+
+			// ModeLabel
+			modeLabel.topAnchor.constraint(equalTo: intensityLabel.bottomAnchor, constant: 30),
+			modeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor ),
+			modeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			modeLabel.firstBaselineAnchor.constraint(equalTo: modeSwitch.lastBaselineAnchor),
+
+			// ModeSwitch
+			modeSwitch.topAnchor.constraint(equalTo: intensitySlider.bottomAnchor, constant: 30),
+			modeSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
+			modeSwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+		])
+	}
+}
+
+// MARK: - Selector methods
+@objc private extension LightDetailView {
+	 func changeSlider(sender: UISlider) {
+		lightViewModel.setUpLightIntensity(value: sender.value)
+	}
+
+	func changeSwitch(sender: UISwitch) {
+		let lightValue: Bool
+		switch sender.isOn {
+		case true:
+			lightValue = true
+
+		case false:
+			lightValue = false
+		}
+
+		lightViewModel.setUpLightMode(value: lightValue)
+	}
+}
+    
+
 

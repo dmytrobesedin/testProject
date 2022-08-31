@@ -6,18 +6,20 @@
 //
 
 import Foundation
-// MARK: - ModulotestAPIResponse
-class ModulotestAPIResponse: Decodable {
+
+ final class ModulotestAPIResponse: Decodable {
+	// MARK: - Properties
     var devices: [Device] {
         didSet{
-            if let closure = devicesDidChangeAction{
-                closure()
-            }
+           devicesDidChangeAction?()
         }
     }
-    var devicesDidChangeAction:(()->())?
-    
-    enum ModulotestAPIResponseKey:CodingKey {
+
+	// MARK: Callbacks
+    var devicesDidChangeAction: (()->())?
+
+	// MARK: - CodingKeys
+    enum ModulotestAPIResponseKey: CodingKey {
         case devices
     }
     
@@ -25,19 +27,20 @@ class ModulotestAPIResponse: Decodable {
         case productType
     }
     
-    enum DeviceTypes:String, Codable {
+    enum DeviceTypes: String, Codable {
         case heater = "Heater"
         case light = "Light"
         case rollerShutter = "RollerShutter"
     }
-    
-    required init(from decoder:Decoder) throws {
+
+	// MARK: - Init / deinit
+	required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: ModulotestAPIResponseKey.self)
         var devicesArrayForType = try container.nestedUnkeyedContainer(forKey: ModulotestAPIResponseKey.devices)
         var devices = [Device]()
         var devicesArray = devicesArrayForType
         
-        while (!devicesArrayForType.isAtEnd ) {
+        while (!devicesArrayForType.isAtEnd) {
             let device = try devicesArrayForType.nestedContainer(keyedBy: DeviceTypeKey.self)
             let productType = try device.decode(DeviceTypes.self, forKey: DeviceTypeKey.productType)
             switch productType {

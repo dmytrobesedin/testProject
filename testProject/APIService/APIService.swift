@@ -7,12 +7,16 @@
 
 import Foundation
 
-class APIService: NSObject {
+ final class APIService: NSObject {
+	// MARK: - Constants
     static let urlString = "http://storage42.com/modulotest/data.json"
+
+	// MARK: - Private properties
     private let url = URL(string: urlString)!
-    
-    func apiToGetDeviceData(completion : @escaping (ModulotestAPIResponse ) -> ()){
-        let dataTask =  URLSession.shared.dataTask(with:url) { (data, urlResponse, anotherError) in
+
+	// MARK: - Methods
+    func apiToGetDeviceData(completion : @escaping (ModulotestAPIResponse) -> ()) {
+        let dataTask = URLSession.shared.dataTask(with:url) { (data, urlResponse, anotherError) in
             guard let data = data  else{return}
             let jsonDecoder = JSONDecoder()
             do {

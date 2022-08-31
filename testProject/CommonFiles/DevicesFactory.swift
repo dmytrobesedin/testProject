@@ -7,9 +7,11 @@
 
 import Foundation
 
-class DevicesFactory {
+final class DevicesFactory {
+	// MARK: - Constants
     static let devicesFactory = DevicesFactory()
-    
+
+	// MARK: - Methods
     func create(_ device: Device) -> DeviceViewModelProtocol? {
         switch device.productType {
         case .light:

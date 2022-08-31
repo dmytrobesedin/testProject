@@ -8,12 +8,13 @@
 import Foundation
 
 extension UserDefaults {
+	// MARK: - Methods
     func isKeyPresentInUserDefaults(key: String) -> Bool {
         return UserDefaults.standard.object(forKey: key) != nil
     }
     
     func cleanUserDefaults() {
-        guard let bundleID = Bundle.main.bundleIdentifier else {return}
+        guard let bundleID = Bundle.main.bundleIdentifier else { return }
         UserDefaults.standard.removePersistentDomain(forName: bundleID)
     }
 }

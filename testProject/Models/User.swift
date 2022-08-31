@@ -7,13 +7,14 @@
 
 import Foundation
 
-// MARK: - User
 struct User: Codable {
+	// MARK: - Properties
     let firstName: String
     let lastName: String
     let address: Address
     let birthDate: Int
-    
+
+	// MARK: - CodingKeys
     private enum CodingKeys: String, CodingKey {
         case firstName
         case lastName

@@ -8,7 +8,11 @@
 import UIKit
 import Foundation
 
-class DevicesViewModel: NSObject {
+ final class DevicesViewModel: NSObject {
+	// MARK: - Properties
+	weak var devicesViewModelDelegate: DevicesViewModelDelegate?
+
+	// MARK: - Private properties
     private var apiService: APIService?
     private(set) var userDefaultManager: UserDefaultsManager?
     private(set) var deviceData: ModulotestAPIResponse? {
@@ -16,9 +20,11 @@ class DevicesViewModel: NSObject {
             self.connectDevicesViewModelToController()
         }
     }
-    weak var devicesViewModelDelegate: DevicesViewModelDelegate?
+
+	// MARK: Callbacks
     var connectDevicesViewModelToController : (() -> ()) = {}
-    
+
+	// MARK: - Init
     override init() {
         super.init()
         self.apiService = APIService()
@@ -27,34 +33,41 @@ class DevicesViewModel: NSObject {
         self.getDecodeData()
     }
     
-    private func getDecodeData()  {
-        DispatchQueue.global().async { [weak self] in
-            guard let self = self else { return }
-            self.apiService?.apiToGetDeviceData { apiResponseData in
-                self.deviceData = apiResponseData
-            }
-        }
-    }
-    
-    func updateDataInUserDefaults() {
-        self.deviceData?.devices.forEach({ device in
+	// MARK: - Methods
+    func updateDataInUserDefaults() {    
+        deviceData?.devices.forEach({ device in
             device.userDefaultsKeys().forEach { key in
                 self.userDefaultManager?.checkKeyInUserDefaults(key, device)
             }
         })
         self.devicesViewModelDelegate?.didFinishUpdatingData()
     }
-    
+
+	func configureVC(_ device: Device) {
+		guard let newViewModel = DevicesFactory.devicesFactory.create(device) else{return}
+		let vc = newViewModel.configureDeviceVC()
+		self.devicesViewModelDelegate?.didFinishConfiguringVC(vc)
+	}
+
+	// MARK: - Private methods
+	private func getDecodeData()  {
+		DispatchQueue.global().async { [weak self] in
+			guard let self = self else { return }
+			self.apiService?.apiToGetDeviceData { apiResponseData in
+				apiResponseData.devices.forEach { device in
+					device.userDefaultsKeys().forEach { key in
+						self.userDefaultManager?.checkKeyInUserDefaults(key, device)
+					}
+				}
+				self.deviceData = apiResponseData
+			}
+		}
+	}
+
     private func notifyModulotestAPIResponse() {
         deviceData?.devicesDidChangeAction = {[weak self] in
-            guard let self = self  else {return}
+            guard let self = self else {return}
             self.getDecodeData()
         }
     }
-    
-    func configureVC(_ device: Device) {
-        guard let newViewModel = DevicesFactory.devicesFactory.create(device) else{return}
-        let vc = newViewModel.configureDeviceVC()
-        self.devicesViewModelDelegate?.didFinishConfiguringVC(vc)
-    }    
 }
