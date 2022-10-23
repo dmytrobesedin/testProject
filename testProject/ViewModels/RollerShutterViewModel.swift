@@ -7,7 +7,7 @@
 import UIKit
 import Foundation
 
- final class RollerShutterViewModel {
+final class RollerShutterViewModel {
 	// MARK: - Properties
 	public var id: Int {
 		return rollerShutterDataModel.id
@@ -21,34 +21,35 @@ import Foundation
 	public var productType: String {
 		return rollerShutterDataModel.productType.rawValue
 	}
-
+	
 	// MARK: - Private properties
-    private var rollerShutterDataModel: RollerShutter
-    private var rollerShutterVC: UIViewController?
-    private var userDefaultsManager = UserDefaultsManager()
-
+	private var rollerShutterDataModel: RollerShutter
+	private var rollerShutterVC: UIViewController?
+	private var userDefaultsManager: UserDefaultsManagerProtocol?
+	
 	// MARK: - Init
-    required init(device: RollerShutter) {
-        self.rollerShutterDataModel = device
-        self.rollerShutterVC = RollerShutterDetailView(rollerShutterViewModel: self)
-    }
-
+	required init(device: RollerShutter) {
+		self.rollerShutterDataModel = device
+		self.rollerShutterVC = RollerShutterDetailView(rollerShutterViewModel: self)
+		self.userDefaultsManager = UserDefaultsManager()
+	}
+	
 	// MARK: - Methods
-    public func setUpRollerShutterPosition(value: Float) {
-        let key = "\(self.id)|\(RollerShutter.CodingKeys.position.rawValue)"
-        userDefaultsManager.setUpSliderValue(key, value)
-    }
+	public func setUpRollerShutterPosition(value: Float) {
+		let key = "\(self.id)|\(RollerShutter.CodingKeys.position.rawValue)"
+		userDefaultsManager?.setUpSliderValue(key, value)
+	}
 }
 
 // MARK: - DeviceViewModelProtocol
 extension RollerShutterViewModel: DeviceViewModelProtocol {
-    func configureDeviceVC() -> UIViewController {
-        guard let vc = rollerShutterVC else {
-            let vc = RollerShutterDetailView(rollerShutterViewModel: self)
-            self.rollerShutterVC = vc
-            return vc
-        }
-        return vc
-    }
+	func configureDeviceVC() -> UIViewController {
+		guard let vc = rollerShutterVC else {
+			let vc = RollerShutterDetailView(rollerShutterViewModel: self)
+			self.rollerShutterVC = vc
+			return vc
+		}
+		return vc
+	}
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
- final class ModulotestAPIResponse: Decodable {
+final class ModulotestAPIResponse: Decodable {
 	// MARK: - Properties
     var devices: [Device] {
         didSet{

@@ -16,7 +16,7 @@ final class HeaterViewModel {
 	public var temperature: Int {
 		return heaterDataModel.temperature
 	}
-	public var mode: Heater.Mode {
+	public var mode: Mode {
 		return heaterDataModel.mode
 	}
 	public var deviceName: String {
@@ -29,22 +29,23 @@ final class HeaterViewModel {
 	// MARK: - Private properties
 	private var heaterDataModel: Heater
 	private var heaterVC: UIViewController?
-	private var userDefaultsManager = UserDefaultsManager()
+	private var userDefaultsManager: UserDefaultsManagerProtocol?
 	
 	// MARK: - Init
 	required init(device: Heater) {
 		self.heaterDataModel = device
 		self.heaterVC = HeaterDetailView(heaterViewModel: self)
+		self.userDefaultsManager = UserDefaultsManager()
 	}
 	
 	// MARK: - Methods
 	public func setUpHeaterTemperature(value: Float) {
 		let key = "\(self.id)|\(Heater.CodingKeys.temperature.rawValue)"
-		userDefaultsManager.setUpSliderValue(key, value)
+		userDefaultsManager?.setUpSliderValue(key, value)
 	}
 	public func setUpHeaterMode(value: Bool) {
 		let key = "\(self.id)|\(Heater.CodingKeys.mode.rawValue)"
-		userDefaultsManager.setUpSwitchValue(key, value)
+		userDefaultsManager?.setUpSwitchValue(key, value)
 	}
 }
 

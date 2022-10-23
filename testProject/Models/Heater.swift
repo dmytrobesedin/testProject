@@ -13,14 +13,9 @@ class Heater: Device {
     var mode: Mode
 
 	// MARK: - CodingKeys
-    public  enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case temperature
         case mode
-    }
-    
-    enum Mode: String, Codable {
-        case on = "ON"
-        case off = "OFF"
     }
 
 	// MARK: - Init
@@ -31,7 +26,7 @@ class Heater: Device {
         try super.init(from: decoder)
     }
 
-	//  MARK: Override methods
+	//  MARK: - Override methods
     override func userDefaultsKeys() -> [String] {
         return [String(super.id) + "|" + CodingKeys.temperature.rawValue,
                 String(super.id) + "|" + CodingKeys.mode.rawValue]

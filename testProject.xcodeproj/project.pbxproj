@@ -19,6 +19,7 @@
 		2D70CCA427ED1E34003A8205 /* DeviceViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D70CCA327ED1E34003A8205 /* DeviceViewModelProtocol.swift */; };
 		2D70CCA627ED1E4C003A8205 /* DevicesViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D70CCA527ED1E4C003A8205 /* DevicesViewModelDelegate.swift */; };
 		2D8B434727C554A70037D8C5 /* UserDefaults+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B434627C554A70037D8C5 /* UserDefaults+Helpers.swift */; };
+		2DA6412F2905C5A500E20FA2 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6412E2905C5A500E20FA2 /* Mode.swift */; };
 		2DCD81F227BBF84E00BF08AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F127BBF84E00BF08AC /* AppDelegate.swift */; };
 		2DCD81F427BBF84F00BF08AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F327BBF84F00BF08AC /* SceneDelegate.swift */; };
 		2DCD81F627BBF84F00BF08AC /* DeviceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD81F527BBF84F00BF08AC /* DeviceListView.swift */; };
@@ -54,6 +55,7 @@
 		2D70CCA327ED1E34003A8205 /* DeviceViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewModelProtocol.swift; sourceTree = "<group>"; };
 		2D70CCA527ED1E4C003A8205 /* DevicesViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewModelDelegate.swift; sourceTree = "<group>"; };
 		2D8B434627C554A70037D8C5 /* UserDefaults+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Helpers.swift"; sourceTree = "<group>"; };
+		2DA6412E2905C5A500E20FA2 /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
 		2DCD81EE27BBF84E00BF08AC /* testProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCD81F127BBF84E00BF08AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DCD81F327BBF84F00BF08AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,14 @@
 			path = CommonFiles;
 			sourceTree = "<group>";
 		};
+		2DA641292905B5F500E20FA2 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				2DA6412E2905C5A500E20FA2 /* Mode.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		2DCD81E527BBF84E00BF08AC = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +156,7 @@
 		2DCD81F027BBF84E00BF08AC /* testProject */ = {
 			isa = PBXGroup;
 			children = (
+				2DA641292905B5F500E20FA2 /* Enums */,
 				2D70CCA727ED1EEF003A8205 /* CommonFiles */,
 				2D70CCA227EBB99A003A8205 /* Protocols */,
 				2D3791BD27C27AD2007D4F91 /* Extensions */,
@@ -291,6 +302,7 @@
 				2D3791C827C28E4B007D4F91 /* RollerShutterTableViewCell.swift in Sources */,
 				2D8B434727C554A70037D8C5 /* UserDefaults+Helpers.swift in Sources */,
 				2D3791C227C2820C007D4F91 /* LightTableViewCell.swift in Sources */,
+				2DA6412F2905C5A500E20FA2 /* Mode.swift in Sources */,
 				2D70CCA427ED1E34003A8205 /* DeviceViewModelProtocol.swift in Sources */,
 				2D3791B827BECE26007D4F91 /* LightDetailView.swift in Sources */,
 				2D70CCA627ED1E4C003A8205 /* DevicesViewModelDelegate.swift in Sources */,
